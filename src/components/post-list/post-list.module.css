@@ -1,0 +1,8 @@
+.postList {
+  display: flex;
+  flex-direction: column;
+}
+
+.postList * {
+  margin-bottom: 10px;
+}

@@ -1,0 +1,19 @@
+.sidebar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100px;
+  height: 100vh;
+  background-color: var(--main-white-color);
+  transition: 1s ease-in;
+}
+
+.sidebar ul {
+  display: flex;
+  flex-direction: column;
+}
+
+.active {
+  width: 10px;
+  background-color: var(--main-active-color);
+}
