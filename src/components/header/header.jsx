@@ -15,8 +15,9 @@ const Header = () => {
           <i><FontAwesomeIcon icon={faSearch} /></i>
         </li>
         <li><Link to="/posts">Главная</Link></li>
-        <li>Контакты</li>
-        <li>Войти</li>
+        <li><Link to="/about">О Блоке</Link></li>
+        <li><Link to="/contacts">Контакты</Link></li>
+        <li><Link to="/sign-in">Войти</Link></li>
       </ul>
     </div>
   )

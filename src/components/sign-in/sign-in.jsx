@@ -1,8 +1,8 @@
 import cn from 'classnames';
 
-import style from './contacts.module.css'
+import style from './sign-in.module.css'
 
-const Contacts = () => {
+const SignIn = () => {
   return (
     <div className={cn(style.container)}>
       <h3>Info</h3>
@@ -15,4 +15,4 @@ const Contacts = () => {
   )
 }
 
-export default Contacts;
+export default SignIn;
