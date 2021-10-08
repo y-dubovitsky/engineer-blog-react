@@ -1,22 +1,4 @@
-.main {
-  display: flex;
-  justify-content: space-between;
-  margin: 20px;
-}
-
-.main * {
-  margin-bottom: 10px;
-}
-
-.content {
-  flex: 5;
-  margin-right: 10px;
-}
-
-/* http://shpargalkablog.ru/2017/04/position-sticky.html */
-.info {
-  flex: 1;
-  height: 100px;
-  position: sticky;
-  top: 60px;
+.container {
+  background-color: #F0F0F0;
+  margin: 20px 0;
 }
