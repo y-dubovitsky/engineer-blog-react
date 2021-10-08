@@ -7,6 +7,7 @@ import PostList from '../post-list/post-list';
 import Contacts from '../contacts/contacts';
 import SignIn from '../sign-in/sign-in';
 import About from '../about/about';
+import PostForm from '../post-form/post-form';
 
 export default function main() {
   return (
@@ -18,6 +19,7 @@ export default function main() {
         <Route path="/about" component={About} />
         <Route path="/posts" component={PostList} />
       </Switch>
+      <PostForm/>
     </div>
   )
 }

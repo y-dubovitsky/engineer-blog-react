@@ -22,9 +22,9 @@ function PostList({ postList, getAllPosts }) {
         </div>
         <div className={cn(style.posts)}>
           {/* TODO Вынести в отдельный компонент? */}
-          {postList.posts.map((post, idx) => {
+          {postList.posts.map((post) => {
             return (
-              <Post key={idx} post={post} />
+              <Post key={post.id} post={post} />
             )
           })}
         </div>
