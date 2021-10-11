@@ -20,7 +20,8 @@ export const addNewPost = (post) => (
       requestBody: post,
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token')),
       }
     }
   }

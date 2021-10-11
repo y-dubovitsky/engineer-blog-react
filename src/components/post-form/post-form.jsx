@@ -19,16 +19,17 @@ const PostForm = ({ addNewPost }) => {
   }
 
   return (
-    <div className={cn(style.postForm)}>
-      <h3>Create new Post</h3>
-      <form>
-        <input onChange={handleInputPost} type="text" name="title" id="" />
-        <input onChange={handleInputPost} type="text" name="description" id="" />
-        <input onChange={handleInputPost} type="text" name="author" id="" />
-      </form>
-
-      {/* TODO Улучшить это */}
-      <button onClick={() => addNewPost(post)}>Add Post</button>
+    <div className={cn(style.container)}>
+      <div className={cn(style.form)}>
+        <label htmlFor="title">Title</label>
+        <input onChange={handleInputPost} type="text" name="title" />
+        <label htmlFor="description">Description</label>
+        <input onChange={handleInputPost} type="textarea" name="description" />
+        <label htmlFor="author">Author</label>
+        <input onChange={handleInputPost} type="text" name="author" />
+        {/* TODO Улучшить это */}
+        <button onClick={() => addNewPost(post)}>Add Post</button>
+      </div>
     </div>
   )
 }
