@@ -1,16 +1,30 @@
-import { SIGN_IN } from '../constants/constants';
+import {
+  SIGN_IN,
+  SIGN_UP
+} from '../constants/constants';
 
 const initState = {
-  token: null
+  username: null,
+  jwttoken: null
 }
+
 const authReducer = (state = initState, action) => {
   switch (action.type) {
-    case SIGN_IN: {
-      const token = action.data;
-      console.log(token.token);
-      saveTokenToLocalStorage(JSON.stringify(token.token));
+    case SIGN_UP: {
+      const user = action.data;
+
       return {
-        token: token
+        ...state,
+        user: user
+      }
+    }
+    case SIGN_IN: {
+      const { jwttoken, username } = action.data;
+      saveTokenToLocalStorage(JSON.stringify(jwttoken));
+
+      return {
+        username,
+        jwttoken
       }
     }
     default: {

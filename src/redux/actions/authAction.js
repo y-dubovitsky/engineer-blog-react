@@ -1,8 +1,9 @@
-import { SIGN_IN } from "../constants/constants";
+import { 
+  SIGN_IN,
+  SIGN_UP
+ } from "../constants/constants";
 
 export const signIn = (form) => {
-
-  console.log(form);
 
   return {
     type: SIGN_IN,
@@ -17,3 +18,18 @@ export const signIn = (form) => {
     }
   }
 };
+
+export const signUp = (form) => {
+  return {
+    type: SIGN_UP,
+    payload: {
+      url: 'http://localhost:8080/register',
+      requestBody: form,
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      }
+    }
+  }
+}
