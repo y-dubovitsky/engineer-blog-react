@@ -9,8 +9,9 @@
     "logo nav nav";
 
   position: fixed;
-  padding: 10px;
+  align-items: center;
   width: 100%;
+  height: 50px;
   z-index: 100;
   background-color: var(--main-dark-color);
   color: white;
@@ -30,6 +31,11 @@
 
 .nav i {
   margin-left: 5px;
+}
+
+ul li a {
+  color: #B7B7B7;
+  text-decoration: none;
 }
 
 ul li input {

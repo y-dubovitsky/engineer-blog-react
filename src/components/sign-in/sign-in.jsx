@@ -6,7 +6,7 @@ import style from './sign-in.module.css'
 import { signIn } from '../../redux/actions/authAction';
 import { useState } from 'react';
 
-const SignIn = ({ signIn }) => {
+const SignIn = ({ signIn, user }) => {
 
   const [form, setForm] = useState({});
 
@@ -19,6 +19,8 @@ const SignIn = ({ signIn }) => {
     })
   }
 
+  console.log(user);
+
   return (
     <div className={cn(style.container)}>
       <div className={cn(style.form)}>
@@ -30,6 +32,12 @@ const SignIn = ({ signIn }) => {
       </div>
     </div>
   )
+}
+
+const mapStateToProps = (state, props) => {
+  return {
+    user: state.auth
+  }
 }
 
 export default connect(null, { signIn })(SignIn);

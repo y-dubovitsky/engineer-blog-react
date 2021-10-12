@@ -1,0 +1,23 @@
+.container {
+  position: absolute;
+  top: 50px;
+  left: -99px;
+  width: 100px;
+  height: 100%;
+  background-color: var(--main-dark-color);
+  border-right: 1px solid silver;
+  transition: 1s ease-in;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  color: #B7B7B7;
+}
+
+.container * {
+  margin-bottom: 1rem;
+}
+
+.container:hover {
+  left: 0px;
+  border-right: none;
+}
