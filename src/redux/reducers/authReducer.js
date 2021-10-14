@@ -4,7 +4,7 @@ import {
 } from '../constants/constants';
 
 const initState = {
-  username: null,
+  user: null,
   jwttoken: null
 }
 
@@ -15,15 +15,18 @@ const authReducer = (state = initState, action) => {
 
       return {
         ...state,
-        user: user
+        user
       }
     }
     case SIGN_IN: {
-      const { jwttoken, username } = action.data;
+      const { jwttoken, user } = action.data;
       saveTokenToLocalStorage(JSON.stringify(jwttoken));
+      
+      console.log(user.username + ' loged in!');
 
       return {
-        username,
+        ...state,
+        user: user,
         jwttoken
       }
     }

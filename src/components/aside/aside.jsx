@@ -12,7 +12,7 @@ export default function Aside() {
         <div className={cn(style.author)}>
           <div className={cn(style.avatar)}>
           </div>
-          <h1 className={cn(style.signIn)}><Link to="/sign-in">Dubovitsky Yury</Link></h1>
+          <h1 className={cn(style.signIn)}><Link to="/main/sign-in">Dubovitsky Yury</Link></h1>
           <span><a href="#">Engineer/Developer</a> from Moscow</span>
         </div>
         <nav className={cn(style.navbar)}>
@@ -31,7 +31,7 @@ export default function Aside() {
 
         <div className={cn(style.social)}>
           <p><small>© Copyright ©2021 All rights reserved</small></p>
-          <p><small>Made by me with <i class="fas fa-heart"></i></small></p>
+          <p><small>Made by me with <i className="fas fa-heart"></i></small></p>
           {/* FIXME Добавить иконки? */}
           <ul>
             <li><a href="#"><i className="icon-facebook2"></i></a></li>

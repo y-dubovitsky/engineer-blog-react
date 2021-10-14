@@ -4,11 +4,18 @@ import cn from 'classnames';
 import style from './sign-in.module.css'
 
 import { signIn } from '../../redux/actions/authAction';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { withRouter, Link } from 'react-router-dom';
 
-const SignIn = ({ signIn, user }) => {
+const SignIn = ({ signIn, user, history }) => { // withRouter -> history -> используем History API
 
   const [form, setForm] = useState({});
+
+  useEffect(() => {
+    if (user) {
+      redirectOnSuccess();
+    }
+  }, [])
 
   const handleFormChange = (e) => {
     e.preventDefault();
@@ -19,7 +26,9 @@ const SignIn = ({ signIn, user }) => {
     })
   }
 
-  console.log(user);
+  const redirectOnSuccess = () => {
+    history.push('/admin');
+  }
 
   return (
     <div className={cn(style.container)}>
@@ -28,6 +37,9 @@ const SignIn = ({ signIn, user }) => {
         <input type="text" name="username" onChange={handleFormChange} />
         <label htmlFor="password">Password</label>
         <input type="password" name="password" onChange={handleFormChange} />
+        <Link to="/">
+          <div className="">close</div>
+        </Link>
         <button onClick={() => signIn(form)}>Sign In</button>
       </div>
     </div>
@@ -36,8 +48,8 @@ const SignIn = ({ signIn, user }) => {
 
 const mapStateToProps = (state, props) => {
   return {
-    user: state.auth
+    user: state.auth.user
   }
 }
 
-export default connect(null, { signIn })(SignIn);
+export default connect(mapStateToProps, { signIn })(withRouter(SignIn)); // Тут тоже нужно обернуть!

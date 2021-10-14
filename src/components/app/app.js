@@ -1,50 +1,33 @@
 import cn from 'classnames';
-import About from '../about/about';
-import Aside from '../aside/aside';
-import Blog from '../blog/blog';
-import Contacts from '../contacts/contacts';
-import Counter from '../counter/counter';
-import Education from '../education/education';
-import Experience from '../experience/experience';
-import Hero from '../hero/hero';
-import RecentWorks from '../recent-works/recents-works';
-import Services from '../services/services';
-import Skills from '../skills/skills';
+import { Switch, Route, Redirect } from 'react-router';
+import Admin from '../admin/admin';
+import Main from '../main/main';
 import style from './app.module.css';
 
-import Fade from 'react-reveal/Fade';
+import { connect } from 'react-redux';
 
-function App() {
-
-  const animateList = [
-    <Hero />,
-    <About />,
-    <Services />,
-    <Counter />,
-    <Skills />,
-    <Education />,
-    <Experience />,
-    <RecentWorks />,
-    <Blog />,
-    <Contacts />,
-  ];
+function App({ user }) {
 
   return (
     <div className={cn(style.container)}>
-      <Aside />
-      <div className={cn(style.main)}>
-        <>
-          {animateList.map((item, key) => (
-            <div key={key}>
-              <Fade>
-                {item}
-              </Fade>
-            </div>
-          ))}
-        </>
-      </div>
+      <Switch>
+        <Route path="/main" component={Main} />
+        {/* TODO Сделать Обертку для Route! */}
+        {user ?
+          <Route exact path="/admin" component={Admin} />
+          :
+          ''
+        }
+        <Redirect to="/main" />
+      </Switch>
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state, props) => (
+  {
+    user: state.auth.user
+  }
+)
+
+export default connect(mapStateToProps)(App);

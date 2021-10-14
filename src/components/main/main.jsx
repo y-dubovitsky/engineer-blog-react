@@ -1,36 +1,59 @@
-
 import cn from 'classnames';
-
 import { connect } from 'react-redux';
-
-import style from './main.module.css';
-import { Route, Redirect, Switch } from 'react-router-dom';
-import PostList from '../post-list/post-list';
-import Contacts from '../contacts/contacts';
-import SignIn from '../sign-in/sign-in';
-import SignUp from '../sign-up/sign-up';
+import Fade from 'react-reveal/Fade';
+import { Route } from 'react-router-dom';
 import About from '../about/about';
-import PostForm from '../post-form/post-form';
-import Sidebar from '../sidebar/sidebar';
+import Aside from '../aside/aside';
+import Blog from '../blog/blog';
+import Contacts from '../contacts/contacts';
+import Counter from '../counter/counter';
+import Education from '../education/education';
+import Experience from '../experience/experience';
+import Hero from '../hero/hero';
+import RecentWorks from '../recent-works/recents-works';
+import Services from '../services/services';
+import SignIn from '../sign-in/sign-in';
+import Skills from '../skills/skills';
+import style from './main.module.css';
 
 function Main({ auth }) {
+
+  const animateList = [
+    <Hero />,
+    <About />,
+    <Services />,
+    <Counter />,
+    <Skills />,
+    <Education />,
+    <Experience />,
+    <RecentWorks />,
+    <Blog />,
+    <Contacts />,
+  ];
+
   return (
-    <div className={cn(style.container)}>
-      {auth.username ?
-        <Sidebar />
-        :
-        ''
-      }
-      <Switch>
-        <Route path="/" exact component={PostList} />
-        <Route path="/contacts" component={Contacts} />
-        <Route path="/sign-in" component={SignIn} />
-        <Route path="/sign-up" component={SignUp} />
-        <Route path="/about" component={About} />
-        <Route path="/posts" component={PostList} />
-        <Route path="/post-form" component={PostForm} />
-      </Switch>
-    </div>
+    <>
+      {/* TODO Переделать это! Сделать так, чтобы компонент БЫЛ уже в дереве или так оставить, он будет добавляться/удаляться*/}
+      <Route path="/main/sign-in" component={() => (
+        <div className={cn(style.signIn)}>
+          <Fade>
+            <SignIn />
+          </Fade>
+        </div>
+      )} />
+      <Aside />
+      <div className={cn(style.main)}>
+        <>
+          {animateList.map((item, key) => (
+            <div key={key}>
+              <Fade>
+                {item}
+              </Fade>
+            </div>
+          ))}
+        </>
+      </div>
+    </>
   )
 }
 
