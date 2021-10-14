@@ -27,6 +27,7 @@ const SignIn = ({ signIn, user, history }) => { // withRouter -> history -> ис
   }
 
   const redirectOnSuccess = () => {
+    history.replace("/main"); // Заменяем текущее??? состояние на /main и переходим на /admin!
     history.push('/admin');
   }
 
@@ -37,11 +38,9 @@ const SignIn = ({ signIn, user, history }) => { // withRouter -> history -> ис
         <input type="text" name="username" onChange={handleFormChange} />
         <label htmlFor="password">Password</label>
         <input type="password" name="password" onChange={handleFormChange} />
-        <Link to="/">
-          <div className="">close</div>
-        </Link>
         <button onClick={() => signIn(form)}>Sign In</button>
       </div>
+      <Link to="/main"><i className={cn("fas fa-times-circle", style.closeBtn)}></i></Link>
     </div>
   )
 }
