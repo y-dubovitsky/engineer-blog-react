@@ -1,0 +1,43 @@
+.container {
+  padding: 2.5em;
+}
+
+.container * {
+  margin-bottom: 2rem;
+}
+
+.about {
+  display: flex;
+  flex-direction: column;
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.technology {
+  width: 100px;
+  height: 100px;
+  padding: 2rem;
+  text-align: left;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0px 0px 56px -8px rgb(0 0 0 / 17%);
+  border-bottom: 2px solid #2c98f0;
+}
+
+.hire {
+  flex: 1;
+  padding: 2em;
+  font-size: 2rem;
+  font-weight: bold;
+  background: #f9bf3f;
+}
+
+.technology i {
+  color: #2c98f0;
+  font-size: 2rem;
+}

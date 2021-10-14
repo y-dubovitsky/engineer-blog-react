@@ -1,0 +1,25 @@
+.container {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center center;
+  margin-bottom: 5em;
+  background-image: url("/src/assets/cover_bg_1.jpg");
+  padding: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  color: white;
+  text-align: center;
+  text-shadow: 1px 1px 1px black;
+}
+
+.container span {
+  font-size: 40px;
+  display: block;
+  color: white;
+  width: 100%;
+  font-weight: 700;
+  margin-bottom: .3em;
+}

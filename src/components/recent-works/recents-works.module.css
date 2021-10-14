@@ -1,0 +1,55 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  font-family: "Quicksand", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.works {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+  justify-content: space-between;
+}
+
+.workContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 400px;
+}
+
+.workInfo {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #81D8FF;
+  color: white;
+  font-size: 1.2rem;
+  width: inherit;
+  height: inherit;
+  opacity: 0;
+  transition: 0.5s ease-in;
+}
+
+.workInfo:hover {
+  opacity: 1;
+}
+
+button {
+  color: #fff;
+  padding: 18px 36px !important;
+  border-color: #2e6da4;
+  background: #2c98f0;
+  color: #fff;
+  border: 2px solid #2c98f0;
+}
