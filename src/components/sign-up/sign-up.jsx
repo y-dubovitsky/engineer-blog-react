@@ -5,6 +5,7 @@ import style from './sign-up.module.css'
 
 import { signUp } from '../../redux/actions/authAction';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const SignUp = ({ signUp }) => {
 
@@ -36,6 +37,7 @@ const SignUp = ({ signUp }) => {
 
         <button onClick={() => signUp(form)}>Sign Up</button>
       </div>
+      <Link to="/main"><i className={cn("fas fa-times-circle", style.closeBtn)}></i></Link>
     </div>
   )
 }

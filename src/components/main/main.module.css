@@ -14,7 +14,8 @@
   color: rgba(0, 0, 0, 0.7);
 }
 
-.signIn {
+.signIn,
+.signUp {
   position: fixed;
   z-index: 10000;
   top: 50%;

@@ -1,10 +1,11 @@
 import cn from 'classnames';
 
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import style from './aside.module.css';
 
-export default function Aside() {
+function Aside({ user }) {
 
   return (
     <div className={cn(style.container)}>
@@ -17,6 +18,11 @@ export default function Aside() {
         </div>
         <nav className={cn(style.navbar)}>
           <ul>
+            {user ?
+              <li className={cn(style.adminPanel)}><Link to="/admin">Admin panel</Link></li>
+              :
+              <li className={cn(style.adminPanel)}><Link to="/main/sign-up">Sign Up</Link></li>
+            }
             <li className=""><a href="#" data-nav-section="home">Home</a></li>
             <li className=""><a href="#" data-nav-section="about">About</a></li>
             <li className=""><a href="#" data-nav-section="services">Services</a></li>
@@ -45,3 +51,10 @@ export default function Aside() {
   )
 }
 
+const mapStateToProps = (state, props) => {
+  return {
+    user: state.auth.user
+  }
+}
+
+export default connect(mapStateToProps)(Aside);

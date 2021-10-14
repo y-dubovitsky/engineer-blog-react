@@ -37,8 +37,10 @@
   justify-content: center;
 }
 
-.author a {
+.author a,
+.adminPanel a {
   color: #2c98f0;
+  font-weight: bold;
 }
 
 .avatar {

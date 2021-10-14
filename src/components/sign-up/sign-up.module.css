@@ -1,9 +1,21 @@
 .container {
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: center;
   text-align: center;
+  background-color: white;
+  width: 500px;
+  height: 400px;
+  opacity: 0.95;
+  box-shadow: 2px 2px 2px silver;
+  border-radius: 10px;
+}
 
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
 }
 
 .form {
@@ -14,13 +26,11 @@
   padding: 10px;
   background-color: white;
   border-radius: 10px;
-  width: 25%;
-  height: 25%;
+  width: 80%;
 }
 
 .form * {
   margin-bottom: 5px;
-
 }
 
 .form input {
@@ -38,6 +48,9 @@
 }
 
 .form button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 50%;
   height: 30px;
   margin: 10px;

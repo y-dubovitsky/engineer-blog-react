@@ -14,6 +14,8 @@ import RecentWorks from '../recent-works/recents-works';
 import Services from '../services/services';
 import SignIn from '../sign-in/sign-in';
 import Skills from '../skills/skills';
+import SignUp from '../sign-up/sign-up';
+
 import style from './main.module.css';
 
 function Main({ auth }) {
@@ -38,6 +40,13 @@ function Main({ auth }) {
         <div className={cn(style.signIn)}>
           <Fade>
             <SignIn />
+          </Fade>
+        </div>
+      )} />
+      <Route path="/main/sign-up" component={() => (
+        <div className={cn(style.signUp)}>
+          <Fade>
+            <SignUp />
           </Fade>
         </div>
       )} />
