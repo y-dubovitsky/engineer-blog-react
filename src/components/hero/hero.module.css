@@ -1,7 +1,10 @@
 .hero {
   background-image: url("/src/assets/hero_bg_1.jpg");
   height: 100vh;
-  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 2.5em;
 }
 
 .hero h1 {
@@ -19,18 +22,17 @@
   font-family: "Quicksand", Arial, sans-serif;
 }
 
-
-.innerText {
-  padding: 2.5em;
-}
-
-
 .porfolioBtn {
-  position: absolute;
-  bottom: 2.5em;
-  left: 2.5em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 150px;
   padding: 1rem;
   color: black;
-  border: 1px solid silver;
+  box-shadow: 1px 1px 1px 2px silver;
   background: transparent !important;
+}
+
+.porfolioBtn:active {
+  transform: scale(0.98);
 }
