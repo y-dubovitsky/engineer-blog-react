@@ -1,0 +1,24 @@
+.aside {
+  float: left;
+  width: 300px;
+}
+
+.main { 
+  float: right;
+  background-color: white;
+  width: calc(100% - 300px);
+  font-family: "Quicksand", Arial, sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(0, 0, 0, 0.7);
+}
+
+.signIn,
+.signUp {
+  position: fixed;
+  z-index: 10000;
+  top: 50%;
+  right: 50%;
+  transform: translateX(50%) translateY(-50%);
+}

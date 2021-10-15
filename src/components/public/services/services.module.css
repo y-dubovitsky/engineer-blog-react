@@ -1,0 +1,72 @@
+.container {
+  padding: 2.5em;
+  display: flex;
+  flex-direction: column;
+}
+
+.container * {
+  margin-bottom: 2rem;
+}
+
+.services {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 50px 0;
+}
+
+.service {
+  width: 250px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  background-color: white;
+  box-shadow: 0px 0px 56px -8px rgb(0 0 0 / 17%);
+  border-bottom: 2px solid #fc5e5e;
+  margin-bottom: 90px;
+}
+
+.hexagon {
+  width: 100px;
+  height: 55px;
+  color: white;
+  background: #fc5e5e;
+  position: relative;
+  margin: 10px auto;
+  transform: translateY(-80%);
+  z-index: 1000;
+  box-shadow: 5px 5px 5px silver;
+}
+
+.hexagon:before {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -25px;
+  left: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-bottom: 25px solid #fc5e5e;
+}
+
+.hexagon:after {
+  content: '';
+  width: 0;
+  height: 0;
+  position: absolute;
+  bottom: -25px;
+  left: 0;
+  border-left: 50px solid transparent;
+  border-right: 50px solid transparent;
+  border-top: 25px solid #fc5e5e;
+}
+
+.hexagon i {
+  color: white;
+}

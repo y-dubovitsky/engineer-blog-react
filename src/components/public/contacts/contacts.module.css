@@ -1,0 +1,72 @@
+.container {
+  padding: 2em;
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+}
+
+.contacts {
+  flex: 1;
+}
+
+.column {
+  display: flex;
+  align-items: center;
+}
+
+.column h3 {
+  margin-left: 20px;
+}
+
+.form {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.form input {
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
+  font: inherit;
+  margin: 0;
+  font-family: inherit;
+  display: block;
+  width: 100%;
+  padding: 10px 20px;
+  line-height: 1.42857;
+  color: #555555;
+  appearance: none;
+  box-shadow: none;
+  border: transparent;
+  background: #f2f3f7;
+  height: 54px;
+  font-size: 16px;
+  font-weight: 400;
+  transition: 0.3s;
+  border-radius: 0;
+  margin-bottom: 10px;
+  padding: 10px;
+}
+
+.form input[type="textarea"] {
+  height: 300px;
+}
+
+.icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 0;
+  width: 100px;
+  height: 100px;
+  background: #f2f3f7;
+}
+
+i {
+  color: #2c98f0;
+  font-size: 2rem;
+}
