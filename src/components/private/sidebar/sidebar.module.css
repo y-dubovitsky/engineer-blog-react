@@ -1,0 +1,25 @@
+.container {
+  grid-area: sidebar;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+}
+
+.container a {
+  padding: 10px;
+  margin: 10px;
+  box-shadow: 1px 1px 1px 1px silver;
+  border-radius: 10px;
+}
+
+.active {
+  background-color: #2c98f0;
+  color: white;
+  font-weight: bold;
+}

@@ -1,0 +1,21 @@
+.container {
+  display: grid;
+  grid-template-areas: 
+  "badgeList"
+  "settings";
+  grid-gap: 5rem;
+  background-color: white;
+  padding: 20px;
+}
+
+.badgeList {
+  grid-area: badgeList;
+
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.main {
+  grid-area: main;
+}

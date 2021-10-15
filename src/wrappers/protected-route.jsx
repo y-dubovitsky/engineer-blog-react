@@ -6,7 +6,7 @@ function ProtectedRoute({ user, path, component }) {
   return (
     <>
       {user ?
-        <Route exact path={path} component={component} />
+        <Route path={path} component={component} />
         :
         <Redirect to="/error-page"/>
       }

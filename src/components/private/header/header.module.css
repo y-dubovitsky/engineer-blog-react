@@ -1,0 +1,13 @@
+.container {
+  grid-area: header;
+  background-color: white;
+  display: flex;
+}
+
+.logo {
+  flex: 1;
+}
+
+.nav {
+  flex: 8;
+}
