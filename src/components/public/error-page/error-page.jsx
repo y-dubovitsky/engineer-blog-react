@@ -12,7 +12,7 @@ function ErrorPage({ history }) {
         <h2>Oops! This Page Could Not Be Found</h2>
         <p>Sorry but the page you are looking for does not exist, have been removed. name changed or is temporarily unavailable</p>
         {/* FIXME Перенаправляет на /main/admin вместо /main */}
-        <button onClick={() => history.goBack()}>Go To Homepage</button>
+        <button onClick={() => history.push("/main")}>Go To Homepage</button>
       </div>
     </div>
   )
