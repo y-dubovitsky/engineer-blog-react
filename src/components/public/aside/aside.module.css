@@ -1,21 +1,25 @@
-.container {
-  width: 100%;
-  height: 100%;
-}
-
 .aside {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: transparent;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 3fr 1fr;
+  grid-template-areas: 
+  "author"
+  "navbar"
+  "social";
+  gap: 1rem;
+
+  align-items: center;
+  justify-items: center;
+
   font-family: "Quicksand", Arial, sans-serif;
   font-weight: 400;
-  display: flex;
-  flex-direction: column;
   text-align: center;
   font-size: 14px;
   line-height: 2;
   color: rgba(0, 0, 0, 0.7);
-  padding-top: 3em;
-  padding-bottom: 50px;
   width: 300px;
   position: fixed;
   overflow-y: scroll;
@@ -25,12 +29,10 @@
   height: 100%;
 }
 
-.signIn {
-  color: #2c98f0;
-  cursor: pointer;
-}
 
 .author {
+  grid-area: author;
+  padding: 1.5rem;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -43,6 +45,11 @@
   font-weight: bold;
 }
 
+.author .signIn {
+  color: #2c98f0;
+  cursor: pointer;
+}
+
 .avatar {
   width: 150px;
   height: 150px;
@@ -52,8 +59,19 @@
   background-size: cover;
 }
 
+.navbar {
+  grid-area: navbar;
+}
+
+.navbar ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .navbar ul li {
   text-transform: uppercase;
+  font-size: 0.9rem;
 }
 
 a {
@@ -64,6 +82,11 @@ a {
 
 a:hover {
   text-decoration: underline #2c98f0;
+}
+
+.social {
+  grid-area: social;
+  padding: 1rem;
 }
 
 .social p i {
