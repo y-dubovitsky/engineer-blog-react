@@ -17,7 +17,7 @@ export default function Sidebar({ user }) {
           <NavLink activeClassName={style.active} to="/admin/blog">Blog</NavLink>
           <NavLink activeClassName={style.active} to="/admin/works">Works</NavLink>
           <NavLink activeClassName={style.active} to="/admin/skills">Skills</NavLink>
-          <NavLink activeClassName={style.active} to="/admin/education">Education</NavLink>
+          <NavLink activeClassName={style.active} to="/admin/university">University</NavLink>
           <NavLink activeClassName={style.active} to="/admin/experience">Experience</NavLink>
         </div>
       </div>

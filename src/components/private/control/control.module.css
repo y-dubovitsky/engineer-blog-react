@@ -1,10 +1,20 @@
 .container {
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas: 
+  "content"
+  "content"
+  "description";
+
+  gap: 1rem;
 }
 
-.statList {
-  margin: 20px 0;
-  display: flex;
-  justify-content: space-between;
+.content {
+  grid-area: content;
+}
+
+.description {
+  text-align: center;
+  grid-area: description;
 }

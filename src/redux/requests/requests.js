@@ -1,5 +1,5 @@
 const callApi = async (payload) => {
-  const { url, requestBody } = payload;
+  const { url, requestBody, headers } = payload;
 
   if (requestBody) {
 
@@ -7,15 +7,15 @@ const callApi = async (payload) => {
 
     const response = await fetch(url, {
       body,
+      headers,
       method: payload.method,
-      headers: payload.headers
     })
     const data = await response.json();
     // TODO Добавить обработку неудачного запроса!
     return data;
   }
 
-  const response = await fetch(url);
+  const response = await fetch(url, { headers });
   const data = await response.json();
 
   return data;

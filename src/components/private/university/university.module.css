@@ -1,0 +1,61 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas:
+    "form list";
+  gap: 1em;
+}
+
+.list {
+  grid-area: list;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-template-areas:
+    "header"
+    "ul"
+    "ul";
+  gap: 1em;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 1px silver;
+  padding: 10px;
+  background-color: whitesmoke;
+}
+
+.title {
+  grid-area: header;
+}
+
+.table {
+  grid-area: ul;
+
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+ul li {
+  display: flex;
+  justify-content: space-between;
+}
+
+ul li,
+ul li i {
+  font-size: 1rem;
+}
+
+ul li i {
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+ul li i:hover {
+  color: silver;
+}
+
+ul li i:active {
+  transform: scale(0.95);
+}
