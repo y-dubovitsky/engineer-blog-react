@@ -1,6 +1,7 @@
 import {
   SIGN_IN,
-  SIGN_UP
+  SIGN_UP,
+  SIGN_OUT
 } from '../constants/constants';
 
 const initState = {
@@ -11,7 +12,8 @@ const initState = {
 const authReducer = (state = initState, action) => {
   switch (action.type) {
     case SIGN_UP: {
-      const user = action.data;
+
+      const { user } = action.data;
 
       return {
         ...state,
@@ -19,9 +21,9 @@ const authReducer = (state = initState, action) => {
       }
     }
     case SIGN_IN: {
-      const { jwttoken, user } = action.data;
+      const { user, jwttoken } = action.data;
+
       saveTokenToLocalStorage(JSON.stringify(jwttoken));
-      
       console.log(user.username + ' loged in!');
 
       return {
@@ -29,6 +31,12 @@ const authReducer = (state = initState, action) => {
         user: user,
         jwttoken
       }
+    }
+    case SIGN_OUT: {
+
+      console.log('User sign out!');
+
+      return initState;
     }
     default: {
       return state

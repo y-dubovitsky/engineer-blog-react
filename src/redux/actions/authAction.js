@@ -1,5 +1,6 @@
 import { 
   SIGN_IN,
+  SIGN_OUT,
   SIGN_UP
  } from "../constants/constants";
 
@@ -32,4 +33,10 @@ export const signUp = (form) => {
       }
     }
   }
-}
+};
+
+export const signOut = () => {
+  return {
+    type: SIGN_OUT
+  }
+};

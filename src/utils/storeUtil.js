@@ -9,3 +9,7 @@ export const saveTokenToLocalStore = (tokenValue) => {
   console.log(`Save token: ${token}`);
   localStorage.setItem('token', token);
 }
+
+export const deleteTokenFromLocalStore = () => {
+  localStorage.removeItem('token');
+}

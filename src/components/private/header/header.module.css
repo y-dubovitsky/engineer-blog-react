@@ -1,13 +1,32 @@
 .container {
   grid-area: header;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  grid-template-areas: "logo nav nav nav";
+  gap: 1rem;
+  align-content: center;
+  padding: 1rem;
+
   background-color: white;
-  display: flex;
 }
 
 .logo {
-  flex: 1;
+  grid-area: logo;
 }
 
 .nav {
-  flex: 8;
+  grid-area: nav;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+
+.nav a {
+  margin: 0 1rem;
+}
+
+.nav a i {
+  font-size: 1rem;
 }

@@ -1,24 +1,27 @@
 const callApi = async (payload) => {
-  const { url, requestBody, headers } = payload;
 
-  if (requestBody) {
+  if (payload) { //FIXME! Избавиться от кучи проверок!
+    const { url, requestBody, headers } = payload;
 
-    const body = JSON.stringify(requestBody);
+    if (requestBody) {
 
-    const response = await fetch(url, {
-      body,
-      headers,
-      method: payload.method,
-    })
+      const body = JSON.stringify(requestBody);
+
+      const response = await fetch(url, {
+        body,
+        headers,
+        method: payload.method,
+      })
+      const data = await response.json();
+      // TODO Добавить обработку неудачного запроса!
+      return data;
+    }
+
+    const response = await fetch(url, { headers });
     const data = await response.json();
-    // TODO Добавить обработку неудачного запроса!
+
     return data;
   }
-
-  const response = await fetch(url, { headers });
-  const data = await response.json();
-
-  return data;
 }
 
 export default callApi;
