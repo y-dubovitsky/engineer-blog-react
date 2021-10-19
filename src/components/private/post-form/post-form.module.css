@@ -6,6 +6,7 @@
   text-align: center;
   border-radius: 10px;
   box-shadow: 1px 1px 1px 1px silver;
+  background-color: whitesmoke;
 }
 
 .form {
@@ -38,7 +39,7 @@
 }
 
 .form input[type=textarea] {
-  height: 5rem;
+  /* height: 5rem; */
 }
 
 .form button {
