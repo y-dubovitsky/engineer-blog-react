@@ -1,6 +1,7 @@
 import ProtectedRoute from '../../../wrappers/protected-route';
 import PostForm from '../post-form/post-form';
 import University from '../university/university';
+import Work from '../work/work';
 import Stat from '../stat/stat';
 import style from './control.module.css';
 
@@ -10,6 +11,7 @@ export default function Control() {
       <div className={style.content}>
         <ProtectedRoute path="/admin/blog" component={PostForm} />
         <ProtectedRoute path="/admin/university" component={University} />
+        <ProtectedRoute path="/admin/works" component={Work} />
         {/* TODO Добавить https://react-dnd.github.io/react-dnd/examples/tutorial */}
         {/* <div className={style.statList}>
         <Stat />
