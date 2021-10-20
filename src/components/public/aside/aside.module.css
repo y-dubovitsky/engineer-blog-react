@@ -1,7 +1,4 @@
 .aside {
-  -webkit-text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 3fr 1fr;
@@ -27,6 +24,21 @@
   background: #f2f3f7;
   transition: 0.5s;
   height: 100%;
+}
+
+.aside::-webkit-scrollbar {
+  width: 5px;
+}
+
+.aside::-webkit-scrollbar-track {
+  -webkit-box-shadow: 5px 5px 5px -5px rgba(34, 60, 80, 0.2) inset;
+  background-color: #f9f9fd;
+  border-radius: 5px;
+}
+
+.aside::-webkit-scrollbar-thumb {
+  border-radius: 5px;
+  background: linear-gradient(#2c98f0, whitesmoke);
 }
 
 
