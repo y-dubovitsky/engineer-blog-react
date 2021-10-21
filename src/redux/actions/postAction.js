@@ -1,7 +1,9 @@
 import {
   GET_ALL_POSTS,
   ADD_NEW_POST
-} from "../constants/constants"
+} from "../constants/constants";
+
+import { getFromLocalStore } from '../../utils/storeUtil';
 
 export const getAllPosts = () => (
   {
@@ -21,7 +23,7 @@ export const addNewPost = (post) => (
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token')),
+        'Authorization': 'Bearer ' + getFromLocalStore('jwttoken'),
       }
     }
   }

@@ -1,8 +1,14 @@
 import {
   SIGN_IN,
   SIGN_UP,
-  SIGN_OUT
+  SIGN_OUT,
+  IS_USER_AUTH_CHECK
 } from '../constants/constants';
+
+import {
+  saveToLocalStore,
+  getFromLocalStore
+} from '../../utils/storeUtil';
 
 const initState = {
   user: null,
@@ -11,10 +17,19 @@ const initState = {
 
 const authReducer = (state = initState, action) => {
   switch (action.type) {
+    // Проверка, если пользователь залогинился и его данные сохранены в localStorage
+    case IS_USER_AUTH_CHECK: {
+      const savedUser = getFromLocalStore('user');
+      if(savedUser) {
+        return {
+          ...state,
+          user: savedUser
+        }
+      }
+      return state;
+    }
     case SIGN_UP: {
-
       const { user } = action.data;
-
       return {
         ...state,
         user
@@ -23,8 +38,8 @@ const authReducer = (state = initState, action) => {
     case SIGN_IN: {
       const { user, jwttoken } = action.data;
 
-      saveTokenToLocalStorage(JSON.stringify(jwttoken));
-      console.log(user.username + ' loged in!');
+      saveToLocalStore('jwttoken', JSON.stringify(jwttoken));
+      saveToLocalStore('user', JSON.stringify(user));
 
       return {
         ...state,
@@ -43,10 +58,5 @@ const authReducer = (state = initState, action) => {
     }
   }
 }
-
-const saveTokenToLocalStorage = (token) => {
-  localStorage.setItem('token', token);
-}
-
 
 export default authReducer;

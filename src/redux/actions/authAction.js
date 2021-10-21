@@ -1,8 +1,9 @@
-import { 
+import {
   SIGN_IN,
   SIGN_OUT,
-  SIGN_UP
- } from "../constants/constants";
+  SIGN_UP,
+  IS_USER_AUTH_CHECK
+} from "../constants/constants";
 
 export const signIn = (form) => {
 
@@ -38,5 +39,11 @@ export const signUp = (form) => {
 export const signOut = () => {
   return {
     type: SIGN_OUT
+  }
+};
+
+export const isUserAuthCheck = () => {
+  return {
+    type: IS_USER_AUTH_CHECK
   }
 };

@@ -1,7 +1,9 @@
 import {
   ADD_WORK,
   GET_USER_WORK_LIST
-} from "../constants/constants"
+} from "../constants/constants";
+
+import { getFromLocalStore } from '../../utils/storeUtil';
 
 export const addWork = (work) => (
   {
@@ -12,7 +14,7 @@ export const addWork = (work) => (
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token')),
+        'Authorization': 'Bearer ' + getFromLocalStore('jwttoken'),
       }
     }
   }
@@ -26,7 +28,7 @@ export const getWorkList = () => (
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token')),
+        'Authorization': 'Bearer ' + getFromLocalStore('jwttoken'),
       }
     }
   }

@@ -15,10 +15,19 @@ import Services from '../services/services';
 import SignIn from '../sign-in/sign-in';
 import Skills from '../skills/skills';
 import SignUp from '../sign-up/sign-up';
+import { isUserAuthCheck } from '../../../redux/actions/authAction';
 
 import style from './main.module.css';
+import { useEffect } from 'react';
 
-function Main({ auth }) {
+function Main({ auth, isUserAuthCheck }) {
+
+  // Проверка на случай перезагрузки страницы, если пользователь уже вошел и перезагрузил страницу.
+  useEffect(() => {
+    if (!auth.user) {
+      isUserAuthCheck();
+    }
+  }, []);
 
   const animateList = [
     <Hero />,
@@ -72,4 +81,4 @@ const mapStateToProps = (state, props) => {
   }
 }
 
-export default connect(mapStateToProps)(Main);
+export default connect(mapStateToProps, { isUserAuthCheck })(Main);

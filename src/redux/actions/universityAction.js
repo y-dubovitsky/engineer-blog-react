@@ -3,6 +3,8 @@ import {
   ADD_UNIVERSITY
 } from '../constants/constants';
 
+import { getFromLocalStore } from '../../utils/storeUtil';
+
 export const getUserUniversityList = () => (
   {
     type: GET_USER_UNIVERSITY_LIST,
@@ -11,7 +13,7 @@ export const getUserUniversityList = () => (
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token')),
+        'Authorization': 'Bearer ' + getFromLocalStore('jwttoken'),
       }
     }
   }
@@ -26,7 +28,7 @@ export const addUniversity = (university) => (
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + JSON.parse(localStorage.getItem('token')),
+        'Authorization': 'Bearer ' + getFromLocalStore('jwttoken'),
       }
     }
   }

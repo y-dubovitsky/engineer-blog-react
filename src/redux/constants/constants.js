@@ -14,3 +14,4 @@ export const ADD_SKILL = 'ADD_SKILL';
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_UP = 'SIGN_UP';
 export const SIGN_OUT = 'SIGN_OUT';
+export const IS_USER_AUTH_CHECK = 'IS_USER_AUTH_CHECK';

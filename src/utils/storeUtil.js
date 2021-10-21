@@ -1,15 +1,17 @@
-export const getTokenFromLocalStore = () => {
-  const token = JSON.parse(localStorage.getItem('token'));
-  console.log(`Current token: ${token}`);
-  return token;
+export const saveToLocalStore = (key, value) => {
+  console.log(key + ' saved to localstorage');
+  localStorage.setItem(key, value);
 }
 
-export const saveTokenToLocalStore = (tokenValue) => {
-  const token = JSON.stringify(tokenValue.token); //FIXME token.token??
-  console.log(`Save token: ${token}`);
-  localStorage.setItem('token', token);
+export const getFromLocalStore = (key) => {
+  const result = JSON.parse(localStorage.getItem(key));
+  console.log(`Get from store -> ${key}: ${result}`);
+  return result;
 }
 
-export const deleteTokenFromLocalStore = () => {
-  localStorage.removeItem('token');
+export const deleteFromLocalStore = (keys) => {
+  keys.forEach(key => {
+    localStorage.removeItem(key);
+    console.log(key + ' removed from localstore!');
+  });
 }
