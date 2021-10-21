@@ -1,0 +1,83 @@
+.container {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-rows: 1fr;
+
+  grid-template-areas: "inputContainer controll info";
+
+  gap: 1rem;
+}
+
+.inputContainer {
+  grid-area: inputContainer;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 1px silver;
+  background-color: whitesmoke;
+  padding: 1rem;
+}
+
+.inputContainer input {
+  margin: 0.5rem;
+  outline: none;
+  border: 1px solid silver;
+  transition: 0.2s ease-in;
+  width: 80%;
+  height: 2rem;
+  border-radius: 10px;
+  padding: 0 1rem;
+}
+
+.controll {
+  grid-area: controll;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 1px silver;
+  background-color: whitesmoke;
+
+}
+
+.controll button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  height: 20%;
+  text-transform: uppercase;
+}
+
+.info {
+  grid-area: info;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 10px;
+  box-shadow: 1px 1px 1px 1px silver;
+  background-color: whitesmoke;
+}
+
+.container input {
+  animation: appear 0.5s;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0
+  }
+
+  to {
+    opacity: 1;
+  }
+}

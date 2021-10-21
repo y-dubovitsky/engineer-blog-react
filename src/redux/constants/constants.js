@@ -8,6 +8,9 @@ export const GET_USER_WORK_LIST = 'GET_USER_WORK_LIST';
 export const ADD_WORK = 'ADD_WORK';
 export const DELETE_WORK = 'DELETE_WORK';
 
+export const GET_USER_SKILL_LIST = 'GET_USER_SKILL_LIST';
+export const ADD_SKILL = 'ADD_SKILL';
+
 export const SIGN_IN = 'SIGN_IN';
 export const SIGN_UP = 'SIGN_UP';
 export const SIGN_OUT = 'SIGN_OUT';
