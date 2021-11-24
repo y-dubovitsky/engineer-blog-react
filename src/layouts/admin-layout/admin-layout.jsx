@@ -1,15 +1,17 @@
-import ProtectedRoute from '../../../wrappers/protected-route';
-import PostForm from '../post-form/post-form';
-import University from '../university/university';
-import Work from '../work/work';
-import Skills from '../skills/skills';
-import Stat from '../stat/stat';
-import style from './control.module.css';
+import ProtectedRoute from '../../wrappers/protected-route';
+import PostForm from '../../components/private/post-form/post-form';
+import About from '../../components/private/about/about';
+import University from '../../components/private/university/university';
+import Work from '../../components/private/work/work';
+import Skills from '../../components/private/skills/skills';
+import Stat from '../../components/private/stat/stat';
+import style from './admin-layout.module.css';
 
-export default function Control() {
+const AdminLayout = () => {
   return (
     <div className={style.container}>
       <div className={style.content}>
+        <ProtectedRoute path="/admin/about" component={About} />
         <ProtectedRoute path="/admin/blog" component={PostForm} />
         <ProtectedRoute path="/admin/university" component={University} />
         <ProtectedRoute path="/admin/works" component={Work} />
@@ -28,3 +30,5 @@ export default function Control() {
     </div>
   )
 }
+
+export default AdminLayout;
