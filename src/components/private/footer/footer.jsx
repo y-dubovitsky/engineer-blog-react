@@ -13,7 +13,7 @@ import style from './footer.module.css';
 const Footer = () => {
   return (
     <div className={cn(style.container)}>
-      <div className={cn(style.up)}>
+      <div className={cn(style.upper)}>
         <div className={cn(style.tutotarial)}>
           <ul>
             <li><h3>Best Tutorials</h3></li>
@@ -31,7 +31,7 @@ const Footer = () => {
           </ul>
         </div>
       </div>
-      <div className={cn(style.down)}>
+      <div className={cn(style.bottom)}>
         <ul>
           <li>Blog</li>
           <li>About us</li>
@@ -48,12 +48,10 @@ const Footer = () => {
           <li>Support Policy</li>
         </ul>
         <div className={style.social}>
-          <ul>
-            <li><i><FontAwesomeIcon icon={faTwitterSquare} /></i></li>
-            <li><i><FontAwesomeIcon icon={faFacebookSquare} /></i></li>
-            <li><i><FontAwesomeIcon icon={faInstagramSquare} /></i></li>
-            <li><i><FontAwesomeIcon icon={faVk} /></i></li>
-          </ul>
+            <div><i><FontAwesomeIcon icon={faTwitterSquare} /></i></div>
+            <div><i><FontAwesomeIcon icon={faFacebookSquare} /></i></div>
+            <div><i><FontAwesomeIcon icon={faInstagramSquare} /></i></div>
+            <div><i><FontAwesomeIcon icon={faVk} /></i></div>
         </div>
         <div className={cn(style.time)}>
           <p>© 2017–{new Date().getFullYear()}, Engineer blog, official site</p>
