@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+input {
+  border: none;
+  box-shadow: 1px silver;
+  opacity: 0.9;
+  width: 90%;
+  height: 90%;
+}
+
+input[type=text] {
+  border-right: 1px solid silver;
+  padding: 5px;
+}
+
+input[type=submit] {
+  background-color: var(--main-active-color);
+  border-radius: 5px;
+  color: white;
+}
