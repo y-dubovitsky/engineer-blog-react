@@ -14,6 +14,7 @@ export default function Sidebar({ user }) {
           <p>Manage your personal blog</p>
         </div>
         <div className={style.navigation}>
+          <NavLink activeClassName={style.active} to="/admin/about">About</NavLink>
           <NavLink activeClassName={style.active} to="/admin/blog">Blog</NavLink>
           <NavLink activeClassName={style.active} to="/admin/works">Works</NavLink>
           <NavLink activeClassName={style.active} to="/admin/skills">Skills</NavLink>
