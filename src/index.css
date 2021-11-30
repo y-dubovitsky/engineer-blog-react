@@ -1,7 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;300;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,400;1,500;1,700&display=swap');
+
 :root {
   --main-dark-color: #1F1F1F;
   --main-white-color: whitesmoke;
-  --main-active-color: #385499;
+  --main-active-color: rgb(32,66,226);
+  --main-background-color: rgb(245,249,252);
 }
 
 * {
@@ -11,7 +14,8 @@
 
 body {
   margin: 0;
-  font-family: "Quicksand", Arial, sans-serif;
+  /* font-family: "Quicksand", Arial, sans-serif; */
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
