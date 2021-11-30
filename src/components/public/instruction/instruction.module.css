@@ -1,0 +1,25 @@
+.container {
+  align-items: center;
+  justify-content: space-around;
+  background-color: rgb(32,66,226);
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 5%;
+}
+
+.info * {
+  margin: 1rem 0;
+  margin-left: 20px;
+}
+
+.icon i {
+  font-size: 4rem;
+  color: white;
+}
