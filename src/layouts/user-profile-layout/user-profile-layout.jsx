@@ -45,7 +45,7 @@ const UserProfileLayout = ({ auth, isUserAuthCheck }) => {
   ];
 
   return (
-    <>
+    <div className={style.container}>
       {/* TODO Переделать это! Сделать так, чтобы компонент БЫЛ уже в дереве или так оставить, он будет добавляться/удаляться*/}
       <Route path="/main/sign-in" component={() => (
         <div className={cn(style.signIn)}>
@@ -73,7 +73,7 @@ const UserProfileLayout = ({ auth, isUserAuthCheck }) => {
           ))}
         </>
       </div>
-    </>
+    </div>
   )
 }
 
