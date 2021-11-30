@@ -1,0 +1,77 @@
+.container {
+  display: flex;
+  height: auto;
+  min-height: 100vh;
+  padding: 100px;
+  padding-top: 60px;
+  background-color: var(--main-background-color);
+}
+
+.container h1 {
+  font-size: 3.5rem;
+  color: black;
+  text-shadow: 1px 1px 1px silver;
+}
+
+.container h4 {
+  color: silver;
+}
+
+.info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.info * {
+  margin: 2% 0;
+}
+
+.searchContainer {
+  display: flex;
+  max-height: 50px;
+  align-items: center;
+  justify-content: center;
+  background-color: white;
+  border: 1px solid silver;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.image {
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.image img {
+  width: 80%; /* you can use % */
+  height: auto;
+  border-radius: 2% 20%;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 50px 10px;
+  }
+
+  .container h1 {
+    font-size: 2.5rem;
+  }
+}
+
+/* Landscape phones and smaller */
+@media (max-width: 480px) {
+  .container h1 {
+    font-size: 1.5rem;
+  }
+
+  .container h4 {
+    font-size: 0.5rem;
+  }
+}
