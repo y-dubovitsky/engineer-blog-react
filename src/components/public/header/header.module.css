@@ -1,0 +1,74 @@
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: calc(100% - 100px); 
+  height: 50px;
+  opacity: 0.9;
+
+  padding: 0 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 1px 1px 10px 1px silver;
+  z-index: 1000;
+}
+
+.logo {
+  flex: 1;
+}
+
+.navContainer {
+  flex: 4;
+  display: flex;
+}
+
+.nav {
+  flex: 3;
+}
+
+.nav ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.auth {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.auth i {
+  color: white;
+  font-size: 1rem;
+  margin-right: 2%;
+}
+
+.menu {
+  display: none;
+}
+
+/* TODO https://qna.habr.com/q/213153 */
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 10px;
+    width: calc(100% - 20px);
+    justify-content: space-between;
+  }
+  .logo {
+    flex: 0.5;
+  }
+  .nav {
+    flex: 2;
+  }
+  .navContainer {
+    display: none;
+  }
+  .menu {
+    display: block;
+  }
+}
