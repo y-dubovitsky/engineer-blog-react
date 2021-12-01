@@ -1,23 +1,20 @@
+import { useState } from 'react';
+import NavigationMenu from '../navigation-menu/navigation-menu';
+import SidebarMain from '../sidebar-main/sidebar-main';
 import styles from './header.module.css';
 
 const Header = (props) => {
+
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
   return (
     <div className={styles.container}>
+      <SidebarMain isSidebarOpen={isSidebarOpen} />
       <div className={styles.logo}>LOGO</div>
       <div className={styles.navContainer}>
-        <div className={styles.nav}>
-          <ul>
-            <li>About</li>
-            <li>Contacts</li>
-            <li>Top Rated Specialist</li>
-          </ul>
-        </div>
-        <div className={styles.auth}>
-          <div className="">Sign In</div>
-          <div className="">Registration</div>
-        </div>
+        <NavigationMenu />
       </div>
-      <div className={styles.menu}>
+      <div className={styles.menu} onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
         <i className="fas fa-bars"></i>
       </div>
     </div>
