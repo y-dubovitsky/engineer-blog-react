@@ -1,10 +1,10 @@
 import ProtectedRoute from '../../wrappers/protected-route';
-import PostForm from '../../components/private/post-form/post-form';
-import About from '../../components/private/about/about';
-import University from '../../components/private/university/university';
-import Work from '../../components/private/work/work';
-import Skills from '../../components/private/skills/skills';
-import Stat from '../../components/private/stat/stat';
+import PostForm from '../../components/admin/post-form/post-form';
+import About from '../../components/admin/about/about';
+import University from '../../components/admin/university/university';
+import Work from '../../components/admin/work/work';
+import Skills from '../../components/admin/skills/skills';
+import Stat from '../../components/admin/stat/stat';
 import style from './admin-layout.module.css';
 
 const AdminLayout = () => {

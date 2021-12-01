@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import { Switch, Route, Redirect } from 'react-router';
-import ErrorPage from './components/public/error-page/error-page';
+import ErrorPage from './components/common/error-page/error-page';
 import ProtectedRoute from './wrappers/protected-route';
 import style from './app.module.css';
 import HomeLayout from './layouts/home-layout/home-layout';

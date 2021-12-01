@@ -1,6 +1,6 @@
 import cn from 'classnames';
 import Dashboard from '../dashboard/dashboard';
-import Footer from '../footer/footer';
+import Footer from '../../common/footer/footer';
 import Header from '../header/header';
 import Sidebar from '../sidebar/sidebar';
 import style from './admin.module.css';
