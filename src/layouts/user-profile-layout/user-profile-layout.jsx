@@ -29,45 +29,44 @@ const UserProfileLayout = ({ auth, isUserAuthCheck }) => {
     }
   }, []);
 
-  //TODO Добавить в адресную строку ссылку на текущего пользователя!
+  const mapComponent = new Map([ // true/false - fade или не fade component!
+    [<Hero />, true],
+    [<About />, true],
+    [<Services />, true],
+    [<Counter />, true],
+    [<Skills />, true],
+    [<Education />, true],
+    [<Experience />, true],
+    [<RecentWorks />, true],
+    [<Blog />, true],
+    [<Contacts />, true],
+  ]);
 
-  const animateList = [
-    <Hero />,
-    <About />,
-    <Services />,
-    <Counter />,
-    <Skills />,
-    <Education />,
-    <Experience />,
-    <RecentWorks />,
-    <Blog />,
-    <Contacts />,
-  ];
+  const fadeComponent = (component) => {
+    return (
+      <Fade>
+        {component}
+      </Fade>
+    )
+  }
+
+  //FIXME Излишняя сложность, убрать!
+  const buildDomFromComponentsMap = (elementMap) => {
+    return Array.from(elementMap).map(([key, value]) => {
+      if (value) {
+        return fadeComponent(key)
+      }
+      return key
+    })
+  }
 
   return (
     <div className={style.container}>
-      {/* TODO Переделать это! Сделать так, чтобы компонент БЫЛ уже в дереве или так оставить, он будет добавляться/удаляться*/}
-      <Route path="/user-profile/sign-in" component={() => (
-        <Fade>
-          <SignIn />
-        </Fade>
-      )} />
-      <Route path="/user-profile/sign-up" component={() => (
-        <Fade>
-          <SignUp />
-        </Fade>
-      )} />
+      <Route path="/user-profile/sign-in" component={fadeComponent(<SignIn />)} />
+      <Route path="/user-profile/sign-up" component={fadeComponent(<SignUp />)} />
       <Aside />
       <div className={cn(style.main)}>
-        <>
-          {animateList.map((item, key) => (
-            <div key={key}>
-              <Fade>
-                {item}
-              </Fade>
-            </div>
-          ))}
-        </>
+        {buildDomFromComponentsMap(mapComponent)}
       </div>
     </div>
   )
