@@ -47,19 +47,15 @@ const UserProfileLayout = ({ auth, isUserAuthCheck }) => {
   return (
     <div className={style.container}>
       {/* TODO Переделать это! Сделать так, чтобы компонент БЫЛ уже в дереве или так оставить, он будет добавляться/удаляться*/}
-      <Route path="/main/sign-in" component={() => (
-        <div className={cn(style.signIn)}>
-          <Fade>
-            <SignIn />
-          </Fade>
-        </div>
+      <Route path="/user-profile/sign-in" component={() => (
+        <Fade>
+          <SignIn />
+        </Fade>
       )} />
-      <Route path="/main/sign-up" component={() => (
-        <div className={cn(style.signUp)}>
-          <Fade>
-            <SignUp />
-          </Fade>
-        </div>
+      <Route path="/user-profile/sign-up" component={() => (
+        <Fade>
+          <SignUp />
+        </Fade>
       )} />
       <Aside />
       <div className={cn(style.main)}>
