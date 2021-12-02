@@ -5,17 +5,18 @@ import style from './sign-in.module.css'
 
 import { signIn } from '../../../redux/actions/authAction';
 import { useEffect, useState } from 'react';
-import { withRouter, Link } from 'react-router-dom';
+import { withRouter, Link, useRouteMatch } from 'react-router-dom';
 
 const SignIn = ({ signIn, user, history }) => { // withRouter -> history -> используем History API
 
   const [form, setForm] = useState({});
+  const match = useRouteMatch();
 
   useEffect(() => {
     if (user) {
       redirectOnSuccess();
     }
-  }, [])
+  }, [user])
 
   const handleFormChange = (e) => {
     e.preventDefault();
@@ -27,8 +28,13 @@ const SignIn = ({ signIn, user, history }) => { // withRouter -> history -> ис
   }
 
   const redirectOnSuccess = () => {
-    history.replace("/main"); // Заменяем текущее??? состояние на /main и переходим на /admin!
-    history.push('/admin');
+    history.replace(match.path);
+    //TODO Пользователя по id получаем!
+    history.push(`/user-profile/${user.username}`);
+  }
+
+  const getPreviousUrl = () => {
+    return match.path.replace("/sign-in", "");
   }
 
   return (
@@ -40,7 +46,7 @@ const SignIn = ({ signIn, user, history }) => { // withRouter -> history -> ис
         <input type="password" name="password" onChange={handleFormChange} />
         <button onClick={() => signIn(form)}>Sign In</button>
       </div>
-      <Link to="/main"><i className={cn("fas fa-times-circle", style.closeBtn)}></i></Link>
+      <Link to={getPreviousUrl}><i className={cn("fas fa-times-circle", style.closeBtn)}></i></Link>
     </div>
   )
 }
