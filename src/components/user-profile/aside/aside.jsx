@@ -1,8 +1,6 @@
 import cn from 'classnames';
-
-import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-
+import { Link } from 'react-router-dom';
 import style from './aside.module.css';
 
 function Aside({ user }) {
@@ -12,7 +10,7 @@ function Aside({ user }) {
       <div className={cn(style.author)}>
         <div className={cn(style.avatar)}>
         </div>
-        <h1 className={cn(style.signIn)}><Link to="/main/sign-in">Dubovitsky Yury</Link></h1>
+        <h1 className={cn(style.signIn)}>Dubovitsky Yury</h1>
         <span><a href="#">Engineer/Developer</a> from Moscow</span>
       </div>
       <nav className={cn(style.navbar)}>

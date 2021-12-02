@@ -1,20 +1,16 @@
 .container {
   display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 1fr;
-  grid-template-areas: 
-  "content"
-  "content"
-  "description";
-
-  gap: 1rem;
+  grid-template-areas:
+    "header header"
+    "sidebar dashboard"
+    "footer footer";
+  grid-gap: 10px;
+  grid-template-columns: 150px 1fr;
+  grid-template-rows: 50px 1fr 400px;
+  background-color: #f2f3f7;
+  color: rgba(0, 0, 0, 0.7);
 }
 
-.content {
-  grid-area: content;
-}
-
-.description {
-  text-align: center;
-  grid-area: description;
+.footerContainer {
+  grid-area: footer;
 }

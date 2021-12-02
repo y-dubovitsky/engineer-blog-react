@@ -1,34 +1,27 @@
-import ProtectedRoute from '../../wrappers/protected-route';
-import PostForm from '../../components/admin/post-form/post-form';
-import About from '../../components/admin/about/about';
-import University from '../../components/admin/university/university';
-import Work from '../../components/admin/work/work';
-import Skills from '../../components/admin/skills/skills';
-import Stat from '../../components/admin/stat/stat';
+import Dashboard from '../../components/admin/dashboard/dashboard';
+import Footer from '../../components/common/footer/footer';
+import Header from '../../components/admin/header/header';
+import Sidebar from '../../components/admin/sidebar/sidebar';
+
 import style from './admin-layout.module.css';
 
-const AdminLayout = () => {
+import { connect } from 'react-redux';
+
+const AdminLayout = ({ user }) => {
   return (
     <div className={style.container}>
-      <div className={style.content}>
-        <ProtectedRoute path="/admin/about" component={About} />
-        <ProtectedRoute path="/admin/blog" component={PostForm} />
-        <ProtectedRoute path="/admin/university" component={University} />
-        <ProtectedRoute path="/admin/works" component={Work} />
-        <ProtectedRoute path="/admin/skills" component={Skills} />
-        {/* TODO Добавить https://react-dnd.github.io/react-dnd/examples/tutorial */}
-        {/* <div className={style.statList}>
-        <Stat />
-        <Stat />
-        <Stat />
-        <Stat />
-      </div> */}
-      </div>
-      <div className={style.description}>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Rem magnam officia at iste esse! Facilis qui est repellat quasi eaque?</p>
+      <Header user={user} />
+      <Sidebar user={user} />
+      <Dashboard />
+      <div className={style.footerContainer}>
+        <Footer />
       </div>
     </div>
   )
 }
 
-export default AdminLayout;
+const mapStateToProps = (state, props) => ({
+  user: state.auth.user
+})
+
+export default connect(mapStateToProps)(AdminLayout);
