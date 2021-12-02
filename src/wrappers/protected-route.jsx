@@ -3,14 +3,12 @@ import { Route, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 function ProtectedRoute({ user, path, component }) {
+
   return (
-    <>
-      {user ?
-        <Route path={path} component={component} />
-        :
-        <Redirect to="/error-page"/>
-      }
-    </>
+    user ?
+      <Route path={path} component={component} />
+      :
+      <Redirect to="/error-page" />
   )
 }
 
