@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import style from './sign-in.module.css'
 
-import { login } from '../../../redux/features/user/userSlice';
+import { login, selectUser } from '../../../redux/features/user/userSlice';
 import { useEffect, useState } from 'react';
 import { withRouter, Link, useRouteMatch } from 'react-router-dom';
 
@@ -13,7 +13,7 @@ const SignIn = ({ history }) => { // withRouter -> history -> используе
   const match = useRouteMatch();
   const dispatch = useDispatch();
 
-  const user = useSelector(state => state.user.user);
+  const user = useSelector(selectUser);
 
   useEffect(() => {
     if (user) {

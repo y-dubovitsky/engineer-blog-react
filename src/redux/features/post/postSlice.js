@@ -24,7 +24,7 @@ export const addNewPost = createAsyncThunk('post/addNewPost', async(post) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + getFromLocalStore('jwttoken'),
+        'Authorization': 'Bearer ' + getFromLocalStore('user', 'jwttoken')
       }
     }
 

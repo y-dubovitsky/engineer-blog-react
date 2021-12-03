@@ -6,8 +6,17 @@ import AdminLayout from './layouts/admin-layout/admin-layout';
 import HomeLayout from './layouts/home-layout/home-layout';
 import UserProfileLayout from './layouts/user-profile-layout/user-profile-layout';
 import ProtectedRoute from './wrappers/protected-route';
+import { loadUserFromLocalStorage } from './redux/features/user/userSlice';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 
 function App(props) {
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(loadUserFromLocalStorage())
+  }, []);
 
   return (
     <div className={cn(style.container)}>

@@ -10,7 +10,7 @@ export const fetchWorkList = createAsyncThunk('works/fetchWorkList', async () =>
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + getFromLocalStore('jwttoken'),
+      'Authorization': 'Bearer ' + getFromLocalStore('user', 'jwttoken')
     }
   }
 
@@ -25,7 +25,7 @@ export const addNewWork = createAsyncThunk('works/addNewWork', async (work) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + getFromLocalStore('jwttoken'),
+      'Authorization': 'Bearer ' + getFromLocalStore('user', 'jwttoken')
     }
   }
 

@@ -11,7 +11,7 @@ export const addSkill = createAsyncThunk("skill/addSkill", async (skill) => {
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + getFromLocalStore('jwttoken'),
+      'Authorization': 'Bearer ' + getFromLocalStore('user', 'jwttoken')
     }
   }
 
@@ -26,7 +26,7 @@ export const fetchUserSkills = createAsyncThunk("skill/fetchUserSkills", async (
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + getFromLocalStore('jwttoken'),
+      'Authorization': 'Bearer ' + getFromLocalStore('user', 'jwttoken')
     }
   }
   const data = callApi(payload);

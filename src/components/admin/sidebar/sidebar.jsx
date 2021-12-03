@@ -8,8 +8,6 @@ export default function Sidebar() {
 
   const user = useSelector(selectUser);
 
-  console.log(user);
-
   return (
     <div className={style.container}>
       <div className={style.sidebar}>

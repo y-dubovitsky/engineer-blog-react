@@ -37,8 +37,10 @@ export const registration = createAsyncThunk("user/registration", async (form) =
 // -------------------------------- Slice --------------------------------
 
 const initialState = {
-  user: null,
-  jwttoken: null,
+  userEntity: {
+    user: null,
+    jwttoken: null,
+  },
   status: 'idle',
   error: null
 }
@@ -47,32 +49,36 @@ const UserSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    IS_USER_AUTH_CHECK(state, action) {
+    //TODO Добавить проверку валидности токена!
+    loadUserFromLocalStorage(state) {
       const savedUser = getFromLocalStore('user');
-      if (savedUser) {
-        state.user = savedUser;
-      }
+      state.userEntity = savedUser;
     },
-    logout(state, action) {
+    logout() {
       return initialState;
     }
   },
   extraReducers(builder) {
-    builder.addCase(login.fulfilled, (state, action) => {
-      saveToLocalStore('jwttoken', JSON.stringify(action.payload.jwttoken));
-      saveToLocalStore('user', JSON.stringify(action.payload.user));
-      return action.payload //!
-    })
+    builder
+      .addCase(login.fulfilled, (state, action) => {
+        saveToLocalStore('user', {
+          user: action.payload.user,
+          jwttoken: action.payload.jwttoken
+        });
+
+        state.userEntity.user = action.payload.user;
+        state.userEntity.jwttoken = action.payload.jwttoken;
+      })
       .addCase(registration.fulfilled, (state, action) => {
-        // state.postEntities.add(action.payload);
+        //FIXME state.postEntities.add(action.payload);
       })
   }
 });
 
 
-export const { logout, IS_USER_AUTH_CHECK } = UserSlice.actions;
+export const { logout, loadUserFromLocalStorage } = UserSlice.actions;
 
 export default UserSlice.reducer;
 
 // -------------------------------- Selectors --------------------------------
-export const selectUser = state => state.user.user;
+export const selectUser = state => state.user.userEntity.user;

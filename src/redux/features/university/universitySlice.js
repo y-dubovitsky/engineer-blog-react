@@ -12,7 +12,7 @@ export const fetchUserUniversityList = createAsyncThunk(
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + getFromLocalStore('jwttoken'),
+        'Authorization': 'Bearer ' + getFromLocalStore('user', 'jwttoken')
       }
     }
 
@@ -30,7 +30,7 @@ export const addUniversity = createAsyncThunk(
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + getFromLocalStore('jwttoken'),
+        'Authorization': 'Bearer ' + getFromLocalStore('user', 'jwttoken')
       }
     }
 

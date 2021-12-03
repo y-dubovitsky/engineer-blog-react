@@ -5,17 +5,12 @@ import Sidebar from '../../components/admin/sidebar/sidebar';
 
 import style from './admin-layout.module.css';
 
-import { useSelector } from 'react-redux';
-import {selectUser} from '../../redux/features/user/userSlice';
-
 const AdminLayout = () => {
-
-  const user = useSelector(selectUser);
 
   return (
     <div className={style.container}>
-      <Header user={user} />
-      <Sidebar user={user} />
+      <Header />
+      <Sidebar />
       <Dashboard />
       <div className={style.footerContainer}>
         <Footer />
