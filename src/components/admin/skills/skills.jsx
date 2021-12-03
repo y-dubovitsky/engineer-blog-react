@@ -1,19 +1,22 @@
 import { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
+  fetchUserSkills,
   addSkill,
-  getUserSkillList
-} from '../../../redux/actions/skillAction';
+  selectSkillEntities
+} from '../../../redux/features/skill/skillSlice';
 
 import style from './skills.module.css';
 
-function Skills({ skills, addSkill, getUserSkillList }) {
+function Skills() {
 
+  const dispatch = useDispatch();
+  const skills = useSelector(selectSkillEntities)
+
+  //FIXME Сделать так, чтобы каждый раз не отправлялось!
   useEffect(() => {
-    if (!skills.entities) {
-      getUserSkillList();
-    }
+    dispatch(fetchUserSkills())
   }, [])
 
   const addInputForm = () => {
@@ -38,10 +41,10 @@ function Skills({ skills, addSkill, getUserSkillList }) {
     const skillsElement = document.querySelector("#skills");
     const skillsInputList = skillsElement.querySelectorAll("input");
 
-    Array.from(skillsInputList).map(input => {
-      addSkill({
+    Array.from(skillsInputList).map(input => { //! Отправляет КАЖДЫЙ скилл по одному!
+      dispatch(addSkill({
         name: input.value
-      })
+      }))
     })
   }
 
@@ -58,7 +61,7 @@ function Skills({ skills, addSkill, getUserSkillList }) {
       </div>
       <div className={style.info}>
         <h2>My Skills:</h2>
-        {skills.entities?.map(skill => (
+        {skills?.map(skill => (
           <p key={skill.id}>{skill.name} : {skill.level}</p>
         ))}
       </div>
@@ -66,10 +69,4 @@ function Skills({ skills, addSkill, getUserSkillList }) {
   )
 }
 
-const mapStateToProps = (state, props) => (
-  {
-    skills: state.skill
-  }
-)
-
-export default connect(mapStateToProps, { addSkill, getUserSkillList })(Skills);
+export default Skills;

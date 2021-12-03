@@ -1,16 +1,19 @@
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import cn from 'classnames';
 
 import style from './sign-in.module.css'
 
-import { signIn } from '../../../redux/actions/authAction';
+import { login } from '../../../redux/features/user/userSlice';
 import { useEffect, useState } from 'react';
 import { withRouter, Link, useRouteMatch } from 'react-router-dom';
 
-const SignIn = ({ signIn, user, history }) => { // withRouter -> history -> используем History API
+const SignIn = ({ history }) => { // withRouter -> history -> используем History API
 
   const [form, setForm] = useState({});
   const match = useRouteMatch();
+  const dispatch = useDispatch();
+
+  const user = useSelector(state => state.user.user);
 
   useEffect(() => {
     if (user) {
@@ -44,17 +47,12 @@ const SignIn = ({ signIn, user, history }) => { // withRouter -> history -> ис
         <input type="text" name="username" onChange={handleFormChange} />
         <label htmlFor="password">Password</label>
         <input type="password" name="password" onChange={handleFormChange} />
-        <button onClick={() => signIn(form)}>Sign In</button>
+        <button onClick={() => dispatch(login(form))}>Sign In</button>
       </div>
       <Link to={getPreviousUrl}><i className={cn("fas fa-times-circle", style.closeBtn)}></i></Link>
     </div>
   )
 }
 
-const mapStateToProps = (state, props) => {
-  return {
-    user: state.auth.user
-  }
-}
 
-export default connect(mapStateToProps, { signIn })(withRouter(SignIn)); // Тут тоже нужно обернуть!
+export default withRouter(SignIn);

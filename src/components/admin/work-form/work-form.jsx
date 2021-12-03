@@ -1,12 +1,13 @@
 import { useState } from 'react';
-import { connect } from 'react-redux';
-import { addWork } from '../../../redux/actions/workAction';
+import { addNewWork } from '../../../redux/features/work/workSlice';
+import { useDispatch } from 'react-redux';
 
 import style from './work-form.module.css';
 
-function WorkForm({ addWork }) {
+function WorkForm() {
 
   const [workForm, setWorkForm] = useState({});
+  const dispatch = useDispatch();
 
   const onFormChange = (event) => {
     setWorkForm({
@@ -24,16 +25,10 @@ function WorkForm({ addWork }) {
         <input onChange={onFormChange} type="text" name="achievements" placeholder="Achievements" />
         <input onChange={onFormChange} type="text" name="startDate" placeholder="Start date" />
         <input onChange={onFormChange} type="text" name="endDate" placeholder="End date" />
-        <button onClick={() => addWork(workForm)}>Add Work</button>
+        <button onClick={() => dispatch(addNewWork(workForm))}>Add Work</button>
       </div>
     </div>
   )
 }
 
-const mapStateToProps = (state, props) => (
-  {
-    work: state.work
-  }
-)
-
-export default connect(mapStateToProps, { addWork })(WorkForm);
+export default WorkForm;

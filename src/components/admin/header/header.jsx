@@ -1,15 +1,17 @@
-import { connect } from "react-redux";
+import { useDispatch } from "react-redux";
 import { deleteFromLocalStore } from "../../../utils/storeUtil";
 import { Link, withRouter } from 'react-router-dom';
-import { signOut } from '../../../redux/actions/authAction';
+import { logout } from '../../../redux/features/user/userSlice'
 
 import style from "./header.module.css";
 
-function Header({ history, signOut }) {
+function Header({ history }) {
 
-  //TODO Стереть еще и пользователя из state.auth
+  const dispatch = useDispatch();
+
+  //TODO Вынести в утилитный класс?
   const endSession = () => {
-    signOut();
+    dispatch(logout());
     history.push("/main");
     deleteFromLocalStore(['user', 'jwttoken']);
   }
@@ -27,4 +29,4 @@ function Header({ history, signOut }) {
   )
 }
 
-export default withRouter(connect(null, { signOut })(Header));
+export default withRouter(Header);

@@ -5,9 +5,13 @@ import Sidebar from '../../components/admin/sidebar/sidebar';
 
 import style from './admin-layout.module.css';
 
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
+import {selectUser} from '../../redux/features/user/userSlice';
 
-const AdminLayout = ({ user }) => {
+const AdminLayout = () => {
+
+  const user = useSelector(selectUser);
+
   return (
     <div className={style.container}>
       <Header user={user} />
@@ -20,8 +24,4 @@ const AdminLayout = ({ user }) => {
   )
 }
 
-const mapStateToProps = (state, props) => ({
-  user: state.auth.user
-})
-
-export default connect(mapStateToProps)(AdminLayout);
+export default AdminLayout;

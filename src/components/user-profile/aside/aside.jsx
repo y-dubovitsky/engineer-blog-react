@@ -1,9 +1,12 @@
 import cn from 'classnames';
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import style from './aside.module.css';
+import { selectUser } from '../../../redux/features/user/userSlice.js';
 
-function Aside({ user }) {
+function Aside() {
+
+  const user = useSelector(selectUser);
 
   return (
     <aside className={cn(style.aside)}>
@@ -49,10 +52,4 @@ function Aside({ user }) {
   )
 }
 
-const mapStateToProps = (state, props) => {
-  return {
-    user: state.auth.user
-  }
-}
-
-export default connect(mapStateToProps)(Aside);
+export default Aside;

@@ -1,15 +1,16 @@
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import cn from 'classnames';
 
 import style from './sign-up.module.css'
 
-import { signUp } from '../../../redux/actions/authAction';
+import { registration } from '../../../redux/features/user/userSlice';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const SignUp = ({ signUp }) => {
+const SignUp = () => {
 
   const [form, setForm] = useState({});
+  const dispatch = useDispatch();
 
   const handleFormChange = (e) => {
     e.preventDefault();
@@ -35,11 +36,11 @@ const SignUp = ({ signUp }) => {
         <label htmlFor="confirm">Confirm Password</label>
         <input type="password" name="confirm" onChange={handleFormChange} />
 
-        <button onClick={() => signUp(form)}>Sign Up</button>
+        <button onClick={() => dispatch(registration(form))}>Sign Up</button>
       </div>
       <Link to="/main"><i className={cn("fas fa-times-circle", style.closeBtn)}></i></Link>
     </div>
   )
 }
 
-export default connect(null, { signUp })(SignUp);
+export default SignUp;

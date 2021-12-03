@@ -1,21 +1,24 @@
 import { useEffect } from 'react';
-import { connect } from 'react-redux';
-import {
-  getWorkList,
-} from '../../../redux/actions/workAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchWorkList, selectAllWorks, selectWorkStatus } from '../../../redux/features/work/workSlice';
+
 import WorkForm from '../work-form/work-form';
 
 import style from './work.module.css';
 
-function Work({ work, getWorkList }) {
+function Work() {
 
-  const { workList } = work;
+  const dispatch = useDispatch();
 
+  const workEntities = useSelector(selectAllWorks);
+  const workStatus = useSelector(selectWorkStatus);
+
+  //FIXME Чтобы не происходило перерендера каждый раз!
   useEffect(() => {
-    if (!workList) {
-      getWorkList()
-    }
-  }, []) //FIXME Вызывается 1 раз при монтирвании компонента!
+      dispatch(fetchWorkList())
+  }, [])
+
+  console.log(workStatus);
 
   return (
     <div className={style.container}>
@@ -23,7 +26,7 @@ function Work({ work, getWorkList }) {
       <div className={style.list}>
         <h2 className={style.title}>My Work List:</h2>
         <ul className={style.table}>
-          {workList?.map(work => (
+          {workEntities?.map(work => (
             <li key={work.id}>{work.name} <i className="far fa-trash-alt"></i></li>
           ))}
         </ul>
@@ -32,10 +35,4 @@ function Work({ work, getWorkList }) {
   )
 }
 
-const mapStateToProps = (state, props) => (
-  {
-    work: state.work
-  }
-);
-
-export default connect(mapStateToProps, { getWorkList })(Work);
+export default Work;

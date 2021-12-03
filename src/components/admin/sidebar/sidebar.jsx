@@ -1,16 +1,20 @@
 import style from './sidebar.module.css';
 
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../redux/features/user/userSlice';
 
-export default function Sidebar({ user }) {
+export default function Sidebar() {
 
-  const { username } = user;
+  const user = useSelector(selectUser);
+
+  console.log(user);
 
   return (
     <div className={style.container}>
       <div className={style.sidebar}>
         <div className={style.user}>
-          <h1>Hello, {username}</h1>
+          <h1>Hello, {user.username}</h1>
           <p>Manage your personal blog</p>
         </div>
         <div className={style.navigation}>

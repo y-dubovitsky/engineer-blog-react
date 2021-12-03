@@ -1,8 +1,10 @@
 import { Route, Redirect } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import {selectUser} from '../redux/features/user/userSlice';
 
-import { connect } from 'react-redux';
+function ProtectedRoute({ path, component }) {
 
-function ProtectedRoute({ user, path, component }) {
+  const user = useSelector(selectUser);
 
   return (
     user ?
@@ -12,8 +14,4 @@ function ProtectedRoute({ user, path, component }) {
   )
 }
 
-const mapStateToProps = (state, props) => ({
-  user: state.auth.user
-})
-
-export default connect(mapStateToProps)(ProtectedRoute);
+export default ProtectedRoute;

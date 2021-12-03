@@ -1,8 +1,23 @@
-import { createStore } from "redux";
-import { applyMiddleware } from "redux";
-import rootReducer from './reducers';
-import api from "./middleware/api";
+import { configureStore } from '@reduxjs/toolkit';
 
-const store = createStore(rootReducer, applyMiddleware(api));
+import userReducer from './features/user/userSlice';
+import workReducer from './features/work/workSlice';
+import postReducer from './features/post/postSlice';
+import skillReducer from './features/skill/skillSlice';
+import universityReducer from './features/university/universitySlice';
 
-export default store;
+function configureAppStore() {
+  const store = configureStore({
+    reducer: {
+      user: userReducer,
+      work: workReducer,
+      post: postReducer,
+      skill: skillReducer,
+      university: universityReducer
+    },
+  })
+  return store;
+}
+
+export default configureAppStore;
+

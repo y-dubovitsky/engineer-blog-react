@@ -1,14 +1,15 @@
 import { useState } from "react";
-import { connect } from "react-redux";
-import { addNewPost } from "../../../redux/actions/postAction";
+import { useDispatch } from "react-redux";
+import { addNewPost } from "../../../redux/features/post/postSlice";
 
 import cn from 'classnames';
 
 import style from './post-form.module.css';
 
-const PostForm = ({ addNewPost }) => {
+const PostForm = () => {
 
   const [post, setPost] = useState({});
+  const dispatch = useDispatch();
 
   const handleInputPost = (e) => {
     const { name, value } = e.target;
@@ -28,10 +29,10 @@ const PostForm = ({ addNewPost }) => {
         <label htmlFor="author">Author</label>
         <input onChange={handleInputPost} type="text" name="author" />
         {/* TODO Улучшить это */}
-        <button onClick={() => addNewPost(post)}>Add Post</button>
+        <button onClick={() => dispatch(addNewPost(post))}>Add Post</button>
       </div>
     </div>
   )
 }
 
-export default connect(null, { addNewPost })(PostForm);
+export default PostForm;

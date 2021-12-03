@@ -1,21 +1,19 @@
 import { useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
-  getUserUniversityList,
-  addUniversity
-} from '../../../redux/actions/universityAction';
+  fetchUserUniversityList,
+  selectUniversityEntities
+} from '../../../redux/features/university/universitySlice';
 import UniversityForm from '../university-form/university-form';
-
 import style from './university.module.css';
 
-function University({ university, getUserUniversityList }) {
+function University() {
 
-  const { universityList } = university;
+  const dispatch = useDispatch();
+  const universities = useSelector(selectUniversityEntities);
 
   useEffect(() => {
-    if (!universityList) {
-      getUserUniversityList()
-    }
+    dispatch(fetchUserUniversityList());
   }, [])
 
   return (
@@ -24,7 +22,7 @@ function University({ university, getUserUniversityList }) {
       <div className={style.list}>
         <h2 className={style.title}>My University:</h2>
         <ul className={style.table}>
-          {universityList?.map(university => (
+          {universities?.map(university => (
             <li key={university.id}>{university.name} <i className="far fa-trash-alt"></i></li>
           ))}
         </ul>
@@ -33,10 +31,4 @@ function University({ university, getUserUniversityList }) {
   )
 }
 
-const mapStateToProps = (state, props) => (
-  {
-    university: state.university
-  }
-);
-
-export default connect(mapStateToProps, { getUserUniversityList, addUniversity })(University);
+export default University;

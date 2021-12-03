@@ -1,11 +1,12 @@
 import { useState } from 'react';
-import { connect } from 'react-redux';
-import { addUniversity } from '../../../redux/actions/universityAction';
+import { useDispatch } from 'react-redux';
+import { addUniversity } from '../../../redux/features/university/universitySlice';
 
 import style from './university-form.module.css';
 
-function UniversityForm({ addUniversity }) {
+function UniversityForm() {
 
+  const dispatch = useDispatch();
   const [universityForm, setUniversityForm] = useState({});
 
   const onFormChange = (event) => {
@@ -24,16 +25,10 @@ function UniversityForm({ addUniversity }) {
         <input onChange={onFormChange} type="text" name="start" placeholder="Start date" />
         <input onChange={onFormChange} type="text" name="end" placeholder="End date" />
         <input onChange={onFormChange} type="text" name="description" placeholder="Description" />
-        <button onClick={() => addUniversity(universityForm)}>Add University</button>
+        <button onClick={() => dispatch(addUniversity(universityForm))}>Add University</button>
       </div>
     </div>
   )
 }
 
-const mapStateToProps = (state, props) => (
-  {
-    university: state.university
-  }
-)
-
-export default connect(mapStateToProps, { addUniversity })(UniversityForm);
+export default UniversityForm;
