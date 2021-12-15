@@ -6,7 +6,7 @@ import { getFromLocalStore, saveToLocalStore } from '../../../utils/storeUtil';
 
 export const login = createAsyncThunk("user/login", async (form) => {
   const payload = {
-    url: 'http://localhost:8080/authenticate',
+    url: 'http://localhost:8080/login',
     requestBody: form,
     method: 'POST',
     headers: {
@@ -51,8 +51,7 @@ const UserSlice = createSlice({
   reducers: {
     //TODO Добавить проверку валидности токена!
     loadUserFromLocalStorage(state) {
-      const savedUser = getFromLocalStore('user');
-      state.userEntity = savedUser;
+      state.userEntity.user = getFromLocalStore('userEntity', 'user');
     },
     logout() {
       return initialState;
@@ -61,13 +60,10 @@ const UserSlice = createSlice({
   extraReducers(builder) {
     builder
       .addCase(login.fulfilled, (state, action) => {
-        saveToLocalStore('user', {
-          user: action.payload.user,
-          jwttoken: action.payload.jwttoken
-        });
-
         state.userEntity.user = action.payload.user;
         state.userEntity.jwttoken = action.payload.jwttoken;
+
+        saveToLocalStore('userEntity', state.userEntity)
       })
       .addCase(registration.fulfilled, (state, action) => {
         //FIXME state.postEntities.add(action.payload);

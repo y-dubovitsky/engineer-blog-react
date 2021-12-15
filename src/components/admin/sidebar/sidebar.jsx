@@ -12,7 +12,7 @@ export default function Sidebar() {
     <div className={style.container}>
       <div className={style.sidebar}>
         <div className={style.user}>
-          <h1>Hello, {user.username}</h1>
+          <h1>Hello, {user}</h1>
           <p>Manage your personal blog</p>
         </div>
         <div className={style.navigation}>

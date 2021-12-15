@@ -33,7 +33,7 @@ const SignIn = ({ history }) => { // withRouter -> history -> используе
   const redirectOnSuccess = () => {
     history.replace(match.path);
     //TODO Пользователя по id получаем!
-    history.push(`/user-profile/${user.username}`);
+    history.push(`/user-profile/${user}`);
   }
 
   const getPreviousUrl = () => {
