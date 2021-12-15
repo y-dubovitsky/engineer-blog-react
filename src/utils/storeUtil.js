@@ -1,16 +1,16 @@
 export const saveToLocalStore = (key, value) => {
   localStorage.setItem(key, JSON.stringify(value));
-  console.log(key + ' saved to localstorage');
+  console.log(key + ' : ' + value + ' saved to localstorage');
 }
 
 //TODO Переписать этот метод!
-export const getFromLocalStore = (key, subKey = null) => {
-  const result = JSON.parse(localStorage.getItem(key));
-  if(subKey) {
-    return result[subKey];
+export const getFromLocalStore = (objectName, objectKey) => {
+  const item = localStorage.getItem(objectName);
+  if (item) {
+    console.log(`Get from store -> ${objectName}: ${objectKey}`);
+    return JSON.parse(item)[objectKey];
   }
-  console.log(`Get from store -> ${key}: ${result}`);
-  return result;
+  return null;
 }
 
 export const deleteFromLocalStore = (keys) => {
