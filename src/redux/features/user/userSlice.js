@@ -6,7 +6,21 @@ import { getFromLocalStore, saveToLocalStore } from '../../../utils/storeUtil';
 
 export const login = createAsyncThunk("user/login", async (form) => {
   const payload = {
-    url: 'http://localhost:8080/login',
+    path: '/login',
+    requestBody: form,
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+    }
+  }
+  const response = await callApi(payload);
+  return response;
+});
+
+export const registration = createAsyncThunk("user/registration", async (form) => {
+  const payload = {
+    path: '/register',
     requestBody: form,
     method: 'POST',
     headers: {
@@ -19,11 +33,10 @@ export const login = createAsyncThunk("user/login", async (form) => {
   return data;
 });
 
-export const registration = createAsyncThunk("user/registration", async (form) => {
+export const getUserInfo = createAsyncThunk("user/get-user-info", async (username) => {
   const payload = {
-    url: 'http://localhost:8080/register',
-    requestBody: form,
-    method: 'POST',
+    path: `/api/user/${username}`,
+    method: 'Get',
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
@@ -40,6 +53,9 @@ const initialState = {
   userEntity: {
     user: null,
     jwttoken: null,
+    data: {
+      error: null
+    }
   },
   status: 'idle',
   error: null
@@ -68,6 +84,14 @@ const UserSlice = createSlice({
       .addCase(registration.fulfilled, (state, action) => {
         //FIXME state.postEntities.add(action.payload);
       })
+      //TODO Вынести логику аутентификации и работу с пользователями в разные слайсы
+      .addCase(getUserInfo.fulfilled, (state, action) => {
+        if (!action.payload) {
+          state.userEntity.data.error = 'error';
+        } else {
+          state.userEntity.data = action.payload
+        }
+      })
   }
 });
 
@@ -78,3 +102,4 @@ export default UserSlice.reducer;
 
 // -------------------------------- Selectors --------------------------------
 export const selectUser = state => state.user.userEntity.user;
+export const selectUserData = state => state.user.userEntity.data;

@@ -14,7 +14,7 @@ function Header({ history }) {
   const endSession = () => {
     dispatch(logout());
     history.push("/main");
-    deleteFromLocalStore(['user']);
+    deleteFromLocalStore(['userEntity']);
   }
 
   return (

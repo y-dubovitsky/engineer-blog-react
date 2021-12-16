@@ -9,7 +9,7 @@ export const fetchPosts = createAsyncThunk('post/fetchPosts', async () => {
 
   const payload = {
     payload: {
-      url: 'http://localhost:8080/api/post/all'
+      path: '/api/post/all'
     }
   }
 
@@ -19,12 +19,12 @@ export const fetchPosts = createAsyncThunk('post/fetchPosts', async () => {
 
 export const addNewPost = createAsyncThunk('post/addNewPost', async(post) => {
     const payload = {
-      url: 'http://localhost:8080/api/post/add',
+      path: '/api/post/add',
       requestBody: post,
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + getFromLocalStore('user', 'jwttoken')
+        'Authorization': getFromLocalStore('userEntity', 'jwttoken')
       }
     }
 

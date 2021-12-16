@@ -8,14 +8,13 @@ export const fetchUserUniversityList = createAsyncThunk(
   "university/fetchUserUniversityList",
   async () => {
     const payload = {
-      url: 'http://localhost:8080/api/university',
+      path: '/api/university',
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + getFromLocalStore('user', 'jwttoken')
+        'Authorization': getFromLocalStore('userEntity', 'jwttoken')
       }
     }
-
     const data = callApi(payload);
     return data;
   }
@@ -25,12 +24,12 @@ export const addUniversity = createAsyncThunk(
   "university/addUniversity",
   async (university) => {
     const payload = {
-      url: 'http://localhost:8080/api/university/add',
+      path: '/api/university/add',
       requestBody: university,
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + getFromLocalStore('user', 'jwttoken')
+        'Authorization': getFromLocalStore('userEntity', 'jwttoken')
       }
     }
 

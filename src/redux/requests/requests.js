@@ -1,26 +1,21 @@
+import axios from "axios";
+
 const callApi = async (payload) => {
 
-  if (payload) { //FIXME! Избавиться от кучи проверок!
-    const { url, requestBody, headers } = payload;
+  const { path, requestBody, headers } = payload;
 
-    if (requestBody) {
+  try {
+    const response = await axios({
+      method: payload.method,
+      //FIXME Вынести в константу
+      url: 'http://localhost:8080' + path,
+      data: JSON.stringify(requestBody),
+      headers: headers
+    });
 
-      const body = JSON.stringify(requestBody);
-
-      const response = await fetch(url, {
-        body,
-        headers,
-        method: payload.method,
-      })
-      const data = await response.json();
-      // TODO Добавить обработку неудачного запроса!
-      return data;
-    }
-
-    const response = await fetch(url, { headers });
-    const data = await response.json();
-
-    return data;
+    return response.data;
+  } catch (error) {
+    console.error(error);
   }
 }
 

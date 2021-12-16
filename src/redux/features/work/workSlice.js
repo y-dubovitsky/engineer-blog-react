@@ -1,16 +1,17 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import callApi from "../../requests/requests";
+import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getFromLocalStore } from '../../../utils/storeUtil';
+
+import callApi from "../../requests/requests";
 
 // ------------------------------- Thunk -------------------------------
 
 export const fetchWorkList = createAsyncThunk('works/fetchWorkList', async () => {
   const payload = {
-    url: 'http://localhost:8080/api/user/works',
+    path: '/api/user/works/' + getFromLocalStore('userEntity', 'user'),
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + getFromLocalStore('user', 'jwttoken')
+      'Authorization': getFromLocalStore('userEntity', 'jwttoken')
     }
   }
 
@@ -20,12 +21,12 @@ export const fetchWorkList = createAsyncThunk('works/fetchWorkList', async () =>
 
 export const addNewWork = createAsyncThunk('works/addNewWork', async (work) => {
   const payload = {
-    url: 'http://localhost:8080/api/work/add',
+    path: '/api/work/add',
     requestBody: work,
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + getFromLocalStore('user', 'jwttoken')
+      'Authorization': getFromLocalStore('userEntity', 'jwttoken')
     }
   }
 

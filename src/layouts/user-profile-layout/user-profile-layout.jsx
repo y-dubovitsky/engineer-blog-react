@@ -15,8 +15,25 @@ import RecentWorks from '../../components/user-profile/recent-works/recents-work
 import Services from '../../components/user-profile/services/services';
 import Skills from '../../components/user-profile/skills/skills';
 import style from './user-profile-layout.module.css';
+import { useDispatch, useSelector } from 'react-redux';
+import { getUserInfo, selectUserData } from '../../redux/features/user/userSlice';
+import { useEffect } from 'react';
 
-const UserProfileLayout = () => {
+const UserProfileLayout = ({ history }) => {
+
+  const dispatch = useDispatch();
+  const userData = useSelector(selectUserData);
+
+  //Избыточная логика
+  useEffect(() => {
+    const username = getUsernameFromUrl();
+    if (username) {
+      dispatch(getUserInfo(username));
+    }
+    if (userData.error === 'error') {
+      history.push("/error-page");
+    }
+  }, [userData.error]);
 
   const mapComponent = new Map([ // true/false - fade или не fade component!
     [<Hero />, true],
@@ -30,6 +47,10 @@ const UserProfileLayout = () => {
     [<Blog />, true],
     [<Contacts />, true],
   ]);
+
+  const getUsernameFromUrl = () => {
+    return history.location.pathname.replace("/user-profile/", "");
+  }
 
   const fadeComponent = (component) => {
     return (

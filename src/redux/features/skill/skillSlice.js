@@ -6,12 +6,12 @@ import { getFromLocalStore } from '../../../utils/storeUtil';
 
 export const addSkill = createAsyncThunk("skill/addSkill", async (skill) => {
   const payload = {
-    url: 'http://localhost:8080/api/skill/add',
+    path: '/api/skill/add',
     requestBody: skill,
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + getFromLocalStore('user', 'jwttoken')
+      'Authorization': getFromLocalStore('userEntity', 'jwttoken')
     }
   }
 
@@ -22,11 +22,11 @@ export const addSkill = createAsyncThunk("skill/addSkill", async (skill) => {
 
 export const fetchUserSkills = createAsyncThunk("skill/fetchUserSkills", async () => {
   const payload = {
-    url: 'http://localhost:8080/api/user/skills',
+    path: '/api/user/skills',
     method: 'GET',
     headers: {
       'Content-Type': 'application/json',
-      'Authorization': 'Bearer ' + getFromLocalStore('user', 'jwttoken')
+      'Authorization': getFromLocalStore('userEntity', 'jwttoken')
     }
   }
   const data = callApi(payload);
