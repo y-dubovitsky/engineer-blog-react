@@ -2,11 +2,11 @@ import cn from 'classnames';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import style from './aside.module.css';
-import { selectUser } from '../../../redux/features/user/userSlice.js';
+import { selectAuthUsername } from '../../../redux/features/auth/authSlice.js';
 
 function Aside() {
 
-  const user = useSelector(selectUser);
+  const auth = useSelector(selectAuthUsername);
 
   return (
     <aside className={cn(style.aside)}>
@@ -18,8 +18,8 @@ function Aside() {
       </div>
       <nav className={cn(style.navbar)}>
         <ul>
-          {user ?
-            <li className={cn(style.adminPanel)}><Link to="/admin">Admin panel</Link></li>
+          {auth ?
+            <li className={cn(style.adminPanel)}><Link to="/admin">Dashboard Panel</Link></li>
             :
             <li className={cn(style.adminPanel)}><Link to="/main/sign-up">Sign Up</Link></li>
           }

@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import style from './sign-in.module.css'
 
-import { login, selectUser } from '../../../redux/features/user/userSlice';
+import { login, selectAuthUsername } from '../../../redux/features/auth/authSlice';
 import { useEffect, useState } from 'react';
 import { withRouter, Link, useRouteMatch } from 'react-router-dom';
 
@@ -13,13 +13,13 @@ const SignIn = ({ history }) => { // withRouter -> history -> используе
   const match = useRouteMatch();
   const dispatch = useDispatch();
 
-  const user = useSelector(selectUser);
+  const username = useSelector(selectAuthUsername);
 
   useEffect(() => {
-    if (user) {
+    if (username) {
       redirectOnSuccess();
     }
-  }, [user])
+  }, [username])
 
   const handleFormChange = (e) => {
     e.preventDefault();
@@ -33,7 +33,7 @@ const SignIn = ({ history }) => { // withRouter -> history -> используе
   const redirectOnSuccess = () => {
     history.replace(match.path);
     //TODO Пользователя по id получаем!
-    history.push(`/user-profile/${user}`);
+    history.push(`/user-profile/${username}`);
   }
 
   const getPreviousUrl = () => {

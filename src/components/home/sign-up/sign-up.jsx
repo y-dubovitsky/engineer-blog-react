@@ -3,7 +3,7 @@ import cn from 'classnames';
 
 import style from './sign-up.module.css'
 
-import { registration } from '../../../redux/features/user/userSlice';
+import { registration } from '../../../redux/features/auth/authSlice';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 

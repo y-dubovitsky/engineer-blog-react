@@ -2,11 +2,11 @@ import style from './sidebar.module.css';
 
 import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
-import { selectUser } from '../../../redux/features/user/userSlice';
+import { selectUsername } from '../../../redux/features/user/userSlice';
 
 export default function Sidebar() {
 
-  const user = useSelector(selectUser);
+  const user = useSelector(selectUsername);
 
   return (
     <div className={style.container}>

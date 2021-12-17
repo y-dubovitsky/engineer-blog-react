@@ -1,20 +1,16 @@
-import { useDispatch, useSelector } from "react-redux";
-import { deleteFromLocalStore } from "../../../utils/storeUtil";
+import { useDispatch } from "react-redux";
 import { Link, withRouter } from 'react-router-dom';
-import { logout, selectUser } from '../../../redux/features/user/userSlice'
-
+import { logout } from '../../../redux/features/auth/authSlice';
 import style from "./header.module.css";
+
 
 function Header({ history }) {
 
   const dispatch = useDispatch();
-  const user = useSelector(selectUser); //TODO Тут это не нужно!
 
-  //TODO Вынести в утилитный класс?
   const endSession = () => {
     dispatch(logout());
     history.push("/main");
-    deleteFromLocalStore(['userEntity']);
   }
 
   return (

@@ -1,18 +1,18 @@
 import { Route, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectUser, loadUserFromLocalStorage } from '../redux/features/user/userSlice';
+import { selectAuthUsername, loadAuthFromLocalStorage } from '../redux/features/auth/authSlice';
 
 function ProtectedRoute({ path, component }) {
 
   const dispatch = useDispatch();
-  const user = useSelector(selectUser);
+  const auth = useSelector(selectAuthUsername);
 
-  if (!user) {
-    dispatch(loadUserFromLocalStorage())
+  if (!auth) {
+    dispatch(loadAuthFromLocalStorage())
   }
 
   return (
-    user ?
+    auth ?
       <Route path={path} component={component} />
       :
       <Redirect to="/error-page" />
