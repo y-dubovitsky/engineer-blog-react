@@ -6,6 +6,7 @@ import Header from "../../components/home/header/header";
 import HeroSearch from "../../components/home/hero-search/hero-search";
 import Instruction from "../../components/home/instruction/instruction";
 import SignIn from "../../components/home/sign-in/sign-in";
+import SignUp from "../../components/home/sign-up/sign-up";
 
 const HomeLayout = (props) => {
 
@@ -15,6 +16,9 @@ const HomeLayout = (props) => {
       <Switch>
         <Route path="/home/sign-in">
           <SignIn />
+        </Route>
+        <Route path="/home/sign-up">
+          <SignUp />
         </Route>
       </Switch>
       <HeroSearch />

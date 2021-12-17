@@ -20,7 +20,7 @@ export const login = createAsyncThunk("user/login", async (form) => {
 
 export const registration = createAsyncThunk("user/registration", async (form) => {
   const payload = {
-    path: '/register',
+    path: '/api/auth/register',
     requestBody: form,
     method: 'POST',
     headers: {
@@ -40,6 +40,7 @@ const initialState = {
     username: null,
     jwttoken: null
   },
+  isUserExists: null,
   status: 'idle',
   error: null
 }
@@ -55,6 +56,9 @@ const AuthSlice = createSlice({
     logout() {
       deleteFromLocalStore(['authEntity']);
       return initialState;
+    },
+    nullifyIsUserExists(state) {
+      state.isUserExists = null;
     }
   },
   extraReducers(builder) {
@@ -66,7 +70,12 @@ const AuthSlice = createSlice({
         saveToLocalStore('authEntity', state.authEntity)
       })
       .addCase(registration.fulfilled, (state, action) => {
-        //FIXME state.postEntities.add(action.payload);
+        if(action.payload) {
+          state.isUserExists = false;
+        } else{
+          state.isUserExists = true;
+        }
+        console.log(state.isUserExists);
       })
   }
 });
@@ -75,8 +84,9 @@ export default AuthSlice.reducer;
 
 // -------------------------------- Actions --------------------------------
 
-export const { logout, loadAuthFromLocalStorage } = AuthSlice.actions;
+export const { logout, loadAuthFromLocalStorage, nullifyIsUserExists } = AuthSlice.actions;
 
 // -------------------------------- Selectors --------------------------------
 
 export const selectAuthUsername = state => state.auth.authEntity.username;
+export const selectUserIsExist = state => state.auth.isUserExists;
