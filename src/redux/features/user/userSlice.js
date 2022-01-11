@@ -30,12 +30,20 @@ const UserSlice = createSlice({
   reducers: {},
   extraReducers(builder) {
     builder
-      .addCase(getUserInfo.fulfilled, (state, action) => {
-        if (!action.payload) {
-          state.error = 'error';
-        } else {
+      .addCase(getUserInfo.pending, (state, action) => {
+        if (state.loading === 'idle') {
+          state.status = 'pending';
           state.error = null;
-          state.userEntity = action.payload
+        }
+      })
+      .addCase(getUserInfo.fulfilled, (state, action) => {
+        state.status = 'fulfilled';
+        state.userEntity = action.payload
+      })
+      .addCase(getUserInfo.rejected, (state, action) => {
+        if (!action.payload) { //TODO Проверка должна еще быть?
+          state.error = action.error;
+          state.status = 'idle';
         }
       })
   }
