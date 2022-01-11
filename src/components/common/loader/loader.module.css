@@ -1,0 +1,40 @@
+.container {
+  position: relative;
+}
+/* TODO Сделать более красивым! */
+.loader {
+  position: absolute;
+  display: block;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  background-color: var(--main-active-color);
+  box-shadow: 1px 1px 1px silver;
+  transition: 0.1s ease;
+  animation: loading 0.7s infinite;
+}
+
+@keyframes loading {
+  0% {
+    transform: scale(0.95);
+    background-image: linear-gradient(var(--main-active-color), white);
+  }
+  5% {
+    transform: scale(1.1);
+  }
+  39% {
+    transform: scale(0.85);
+  }
+  45% {
+    transform: scale(1);
+  }
+  60% {
+    transform: scale(0.95);
+    background-image: linear-gradient(rgb(37, 221, 37), white);
+  }
+  100% {
+    transform: scale(0.9);
+  }
+}
+
