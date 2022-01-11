@@ -11,11 +11,13 @@
   flex-direction: column;
 }
 
+.about p:first-letter {
+  text-transform: capitalize;
+}
+
 .technologies {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
 }
 
 .technology {

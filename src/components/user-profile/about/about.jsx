@@ -1,18 +1,49 @@
 import cn from 'classnames';
-
-import style from './about.module.css'
+import { useSelector } from 'react-redux';
+import { selectUser, selectUserEntity } from '../../../redux/features/user/userSlice';
+import Loader from '../../common/loader/loader.component';
+import style from './about.module.css';
 
 const About = () => {
+
+  const userEntity = useSelector(selectUserEntity);
+  const user = useSelector(selectUser);
+
+  if (user.status === 'idle') {
+    return <Loader />;
+  }
+
+  const { about, userAboutTag, successProjectCount } = userEntity.userAbout;
+
+  // Верстку пофиксить!
+  const showUserTechnologies = (technologies) => {
+    return technologies.map(tech => (
+      <div key={tech.id} className={cn(style.technology)}>
+        {/*TODO Добавить возможность пользователю выбирать иконки и мб цвета */}
+        <i className="fab fa-react"></i>
+        <h3>{tech.name}</h3>
+      </div>
+    ))
+  }
+
+  const showUserAboutText = (text) => {
+    const arrayOfString = text.split(".");
+
+    return arrayOfString.map(string => (
+      <p>{string}</p>
+    ))
+  }
+
   return (
     <section className={cn(style.container)}>
       <h3>ABOUT ME</h3>
       <h1>WHO AM I?</h1>
-      <p>Hi I'm Jackson Ford On her way she met a copy. The copy warned the Little Blind Text, that where it came from it would have been rewritten a thousand times and everything that was left from its origin would be the word "and" and the Little Blind Text should turn around and return to its own, safe country.</p>
-
-      <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+      <div className={style.about}>
+        {showUserAboutText(about)}
+      </div>
       <div className={cn(style.about)}>
         <div className={cn(style.technologies)}>
-          <div className={cn(style.technology)}>
+          {/* <div className={cn(style.technology)}>
             <i className="fab fa-react"></i>
             <h3>Front-End Developer</h3>
           </div>
@@ -27,11 +58,12 @@ const About = () => {
           <div className={cn(style.technology)}>
             <i className="fas fa-brain"></i>
             <h3>Engineere</h3>
-          </div>
+          </div> */}
+          {showUserTechnologies(userAboutTag)}
         </div>
         <div className={cn(style.hire)}>
           I am happy to know you
-          that 300+ projects done sucessfully!
+          that {successProjectCount}+ projects done sucessfully!
         </div>
       </div>
     </section>
