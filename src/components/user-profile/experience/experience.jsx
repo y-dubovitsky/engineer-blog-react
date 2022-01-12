@@ -1,42 +1,38 @@
 import cn from 'classnames';
 
-import style from './experience.module.css';
+import styles from './experience.module.css';
+import { useSelector } from 'react-redux';
+import { selectUser } from '../../../redux/features/user/userSlice';
+import Loader from '../../common/loader/loader.component';
 
 export default function Experience() {
+
+  const { status, userEntity } = useSelector(selectUser);
+
+  const showUserWorkExperience = (works) => {
+    return works.map((work, idx) => (
+      <div className={cn(styles.container, idx % 2 === 0 ? styles.left : styles.right)}>
+        <div className={cn(styles.date)}>{work.startDate}</div>
+        <div className={cn(styles.content)}>
+          <h2>{work.name}</h2>
+          <p>{work.position}</p>
+        </div>
+      </div>
+    ))
+  }
+
+  if (status === 'idle') {
+    return <Loader />;
+  }
+
   return (
-    <div className={cn(style.experience)}>
-      <div className={cn(style.info)}>
+    <div className={cn(styles.experience)}>
+      <div className={cn(styles.info)}>
         <span>EXPERIENCE</span>
         <h2>Work Experience</h2>
       </div>
-      <div className={cn(style.timeline)}>
-        <div className={cn(style.container, style.left)}>
-          <div className={cn(style.date)}>15 Dec</div>
-          <div className={cn(style.content)}>
-            <h2>Lorem ipsum dolor sit amet</h2>
-            <p>
-              Lorem ipsum dolor sit amet elit. Aliquam odio dolor, id luctus erat sagittis non. Ut blandit semper pretium.
-            </p>
-          </div>
-        </div>
-        <div className={cn(style.container, style.right)}>
-          <div className={cn(style.date)}>15 Dec</div>
-          <div className={cn(style.content)}>
-            <h2>Lorem ipsum dolor sit amet</h2>
-            <p>
-              Lorem ipsum dolor sit amet elit. Aliquam odio dolor, id luctus erat sagittis non. Ut blandit semper pretium.
-            </p>
-          </div>
-        </div>
-        <div className={cn(style.container, style.left)}>
-          <div className={cn(style.date)}>15 Dec</div>
-          <div className={cn(style.content)}>
-            <h2>Lorem ipsum dolor sit amet</h2>
-            <p>
-              Lorem ipsum dolor sit amet elit. Aliquam odio dolor, id luctus erat sagittis non. Ut blandit semper pretium.
-            </p>
-          </div>
-        </div>
+      <div className={cn(styles.timeline)}>
+        {showUserWorkExperience(userEntity.works)}
       </div>
     </div>
   )
