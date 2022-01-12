@@ -17,6 +17,11 @@
   justify-content: space-between;
 }
 
+.repoName {
+  font-style: italic;
+  text-align: center;
+}
+
 .workContainer {
   position: relative;
   display: flex;
