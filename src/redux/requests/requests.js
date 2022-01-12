@@ -4,7 +4,7 @@ const callApi = async (payload) => {
 
   const { path, requestBody, headers } = payload;
 
-  try {
+   try { //TODO Нужен ли тут try catch это же асинхронный метод
     const response = await axios({
       method: payload.method,
       //TODO Вынести в константу?

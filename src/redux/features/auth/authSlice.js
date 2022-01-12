@@ -70,9 +70,9 @@ const AuthSlice = createSlice({
         saveToLocalStore('authEntity', state.authEntity)
       })
       .addCase(registration.fulfilled, (state, action) => {
-        if(action.payload) {
+        if (action.payload) {
           state.isUserExists = false;
-        } else{
+        } else {
           state.isUserExists = true;
         }
         console.log(state.isUserExists);
