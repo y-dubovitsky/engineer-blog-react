@@ -9,9 +9,9 @@ import styles from './recents-works.module.css';
 const RecentWorks = () => {
 
   const { status, userEntity } = useSelector(selectUser);
-  const [countOfWorks, setСountOfWorks] = useState(10);
+  const [countOfWorks, setСountOfWorks] = useState(6);
 
-  const showRecentUserWork = (works, countOfWorks = 6) => {
+  const showRecentUserWork = (works, countOfWorks) => {
     return works.slice(0, countOfWorks).map(work => {
       const { id, name, html_url } = work;
 

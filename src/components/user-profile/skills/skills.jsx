@@ -16,7 +16,7 @@ export default function Skills() {
 
   const showUserSkills = (skills) => {
     return skills.map(skill => (
-      <div className={cn(style.porgressContainer)}>
+      <div key={skill.id} className={cn(style.porgressContainer)}>
         <div className={cn(style.progressWrap)}>
           <h3>{skill.name}</h3>
           <div className={cn(style.progress)}>

@@ -30,7 +30,7 @@ const About = () => {
     const arrayOfString = text.split(".");
 
     return arrayOfString.map(string => (
-      <p>{string}</p>
+      <p key={string.substr(7)}>{string}</p>
     ))
   }
 
