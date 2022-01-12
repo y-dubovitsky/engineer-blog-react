@@ -7,7 +7,7 @@ const callApi = async (payload) => {
   try {
     const response = await axios({
       method: payload.method,
-      //FIXME Вынести в константу
+      //TODO Вынести в константу?
       url: 'http://localhost:8080' + path,
       data: JSON.stringify(requestBody),
       headers: headers
@@ -16,6 +16,7 @@ const callApi = async (payload) => {
     return response.data;
   } catch (error) {
     console.error(error);
+    return error;
   }
 }
 
